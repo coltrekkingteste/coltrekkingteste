@@ -2,6 +2,9 @@
 $(document).ready(function() {
 	//SideNav
 	$(".button-collapse").sideNav({closeOnClick: true, draggable: false});
+
+	//tabs do materialize com dropdown
+	$(".dropdown-trigger").dropdown();
 	
 	//ScrollSpy
 	$('.scrollspy').scrollSpy();
