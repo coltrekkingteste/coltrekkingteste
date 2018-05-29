@@ -13,7 +13,14 @@ body {
 
 @media only screen and (min-width: 993px) {
   .container {
-    width: 90%; } }
+    width: 90%; } 
+
+  /* Diminuir o tamanho dos icones */
+  .icones {
+    width: 43px;
+  }
+  
+}
 
 /*****Nav Bar*****/
 nav .row {
@@ -107,7 +114,14 @@ nav .tabs {
   nav form .material-icons {
     margin-top: -5px; }
   nav .button-collapse {
-    margin-top: 4px !important; } }
+    margin-top: 4px !important; } 
+  
+  /* Diminuir o tamanho dos icones */
+  .icones {
+    width: 38px;
+  }
+
+}
 
 @media screen and (max-width: 600px) {
   nav form .material-icons {
