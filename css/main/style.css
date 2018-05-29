@@ -338,7 +338,14 @@ aCountdownLaranja {
 
 @media screen and (max-width: 600px) {
   .modal-content table thead tr th:nth-child(2) {
-    width: 80% !important; } }
+    width: 80% !important; } 
+  
+  /* Diminuir o tramanho dos icones quando a tela e menor que 600px */
+  .icones {
+    width: 30px;
+    margin-top: 10px;
+  }
+}
 
 .modal-content table tbody .espera {
   background-color: #ffebee !important; }
