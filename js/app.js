@@ -756,10 +756,4 @@
 			}.bind(this));
 		});			
 	}]);
-
-
-	var contarNumeroEventos = document.getElementById('contarNumeroDeEventos');;
-	console.log(contarNumeroEventos);
-	
-
 })();

@@ -17,6 +17,11 @@ $(document).ready(function() {
 		var altura = $('#card-confirmados').height() + 36;		
 		$('.table-of-contents').css("margin-top", altura + "px");
 	}, 500);
+
+
+	var contarNumeroEventos = document.getElementById('contarNumeroDeEventos');;
+	console.log(contarNumeroEventos);
+
 });
 
 
