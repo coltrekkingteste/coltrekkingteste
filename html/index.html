@@ -239,13 +239,7 @@
 								<!--Cria os cards de evento-->
 								<div class="container col s12 l7" ng-repeat="evento in eventos">
 									<div class="card card-evento section scrollspy" id="contarNumeroDeEventos" ng-attr-id="{{evento.ID}}" ng-if="evento.Disponivel == 0 || evento.Disponivel == 1">
-										
-										<div ng-if="evento.Disponivel == 0 || evento.Disponivel == 1">
-											<script>
-												var contarNumeroEventos = 1;
-												console.log(contarNumeroEventos);
-											</script>
-										</div>
+												
 										
 
 										
@@ -449,6 +443,11 @@
 							</div>
 						</div>
 					</div>
+
+					<script>
+						var contarNumeroEventos = document.getElementById('contarNumeroDeEventos');;
+						console.log(contarNumeroEventos);
+					</script>
 
 
 					<!--Ranking-->
