@@ -238,9 +238,13 @@
 								
 								<!--Cria os cards de evento-->
 								<div class="container col s12 l7" ng-repeat="evento in eventos">
-									<div class="card card-evento section scrollspy" ng-attr-id="{{evento.ID}}" ng-if="evento.Disponivel == 0 || evento.Disponivel == 1">
+									<div class="card card-evento section scrollspy" id="contarNumeroDeEventos" ng-attr-id="{{evento.ID}}" ng-if="evento.Disponivel == 0 || evento.Disponivel == 1">
 										
-										
+										<script>
+											var contarNumeroEventos = document.getElementById('contarNumeroDeEventos');
+											alert(contarNumeroEventos.length);
+											console.log(contarNumeroEventos.length);
+										</script>
 										
 
 										
