@@ -165,8 +165,6 @@
 				//Select
 				$('select').material_select();
 
-				//tabs do materialize com dropdown
-				$(".dropdown-trigger").dropdown();
 				
 				//Date-Picker
 				$('.datepicker').pickadate({
@@ -421,8 +419,6 @@
 						$('.modal').modal();
 						$('.scrollspy').scrollSpy();
 	
-						//tabs do materialize com dropdown
-						$(".dropdown-trigger").dropdown();
 						
 						$('.dropdown-button').dropdown({
 							inDuration: 300,
@@ -631,8 +627,6 @@
 				//Select
 				$('select').material_select();
 				
-				//tabs do materialize com dropdown
-				$(".dropdown-trigger").dropdown();
 
 				//Post fixado
 				$("#fixado").change(function() {
