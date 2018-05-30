@@ -311,7 +311,7 @@
 		//Funcao Countdown
 		$scope.funcaoCountdown = function(element, dataCountdown, controle) {
 			var agora = $scope.horaServidor;
-			var distancia = dataCountdown - agora - 3600000; //-36000 Milissegundo pois os eventos estavam 1 hora adiantado e nao consegui achar o problema, por isso -36000 Milissegundo  (1 hora)
+			var distancia = dataCountdown - agora;
 			
 			//Transforma distancia em d h m s
 			var days = Math.floor(distancia / (1000 * 60 * 60 * 24));
@@ -534,23 +534,16 @@
 		}
 		
 		//Finalizar evento
-		$scope.finalizarEvento = function(params, eventoID, fatorKAntigo) {
+		$scope.finalizarEvento = function(params, eventoID) {
 			//Pega as pessoas marcadas
-			var pessoas = $("input[name='pessoas[]']").toArray();
+			var pessoas = $("input[name='pessoas[]']:checked").toArray();
 			var pessoasArray = [];
-			var kilometragemParaFloat =  parseFloat(params.Kilometragem.replace(',','.'));
-			var subidaParaFloat = parseFloat(params.subida.replace(',','.'));
-			var descidaParaFloat = parseFloat(params.descida.replace(',','.'));
 						
 			pessoas.forEach(elem => pessoasArray.push(elem.value));
 			
 			var dataPost = {
 				eventoID: eventoID,
-				//fatorK na verdade eh a pontucao, math.abs eh o modulo do numero
-				fatork: (kilometragemParaFloat * (1+(subidaParaFloat + Math.abs(descidaParaFloat))/1000)),
-				fatorKAntigo: fatorKAntigo,
-				subdesc: 1+(subidaParaFloat + Math.abs(descidaParaFloat))/1000,
-				distancia: kilometragemParaFloat,
+				fatork: (params.Fatork * params.Kilometragem),
 				pessoas: pessoasArray
 			};
 			
@@ -561,7 +554,7 @@
 					Materialize.toast("Evento finalizado com sucesso!", 2000);					
 					$scope.eventosGetter();
 				} else {
-					
+					Materialize.toast("Erro ao finalizar o evento!", 3000);
 				}
 			});
 		}
@@ -583,26 +576,6 @@
 				}
 			});
 		}
-
-		//Excluir Usuario
-		$scope.excluirUsuario = function(id, idevento) {
-			var data = {
-				ID: id,
-				IDEvento: idevento
-			}
-			
-			//Chama POST Excluir Usuario
-			httpService.post('/excluir-usuario', data, function(answer) {
-				//Emite alerta sobre o status da operacao
-				if(answer) {
-					Materialize.toast("Usuário excluído com sucesso!", 2000);					
-
-				} else {
-					Materialize.toast("Erro ao excluir o usuario!", 3000);
-				}
-			});
-		}
-		
 		
 		//Inicializa
 		$rootScope.$on("InicializarEventos", function() {
@@ -742,7 +715,6 @@
 
 	//Ranking Controller
 	app.controller('RankingController', ['HTTPService', '$rootScope', function(httpService, $rootScope) {
-	
 		//Quando EventosController ja acabou
 		$rootScope.$on('dataEventos', function(event) {
 			//Chama RankingService
@@ -751,6 +723,6 @@
 					$rootScope.ranking = answer;
 				}
 			}.bind(this));
-		});			
+		});		
 	}]);
 })();
