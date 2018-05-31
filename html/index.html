@@ -230,7 +230,7 @@
 									
 									<!-- Scroll Spy -->
 									<ul class="section table-of-contents">
-										<li ng-repeat="evento in eventos" ng-if="evento.Disponivel == 2">
+										<li ng-repeat="evento in eventos">
 											<a ng-attr-href="{{'#' + evento.ID}}">{{evento.Nome}}</a>
 										</li>
 									</ul>
@@ -238,7 +238,7 @@
 								
 								<!--Cria os cards de evento-->
 								<div class="container col s12 l7" ng-repeat="evento in eventos">
-									<div class="card card-evento section scrollspy" ng-attr-id="{{evento.ID}}" ng-if="evento.Disponivel == 2">
+									<div class="card card-evento section scrollspy" ng-attr-id="{{evento.ID}}">
 												
 										
 
