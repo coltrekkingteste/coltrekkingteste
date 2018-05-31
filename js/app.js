@@ -567,6 +567,31 @@
 				}
 			});
 		}
+
+
+
+		//Finalizar Evento Prelecao - Sem Fator K
+		$scope.finalizarEventoPrelecao = function(eventoID) {
+			var dataPost = {
+				eventoID: eventoID
+			}
+			
+			//Chama POST Excluir Evento
+			httpService.post('/finalizar-evento-prelecao', dataPost, function(answer) {
+				//Emite alerta sobre o status da operacao
+				if(answer) {
+					Materialize.toast("Evento finalizado com sucesso!", 2000);					
+					$scope.eventosGetter();
+				} else {
+					Materialize.toast("Erro ao finalizar evento", 3000);
+				}
+			});
+		}
+
+
+
+
+		
 		
 		//Excluir Evento
 		$scope.excluirEvento = function(eventoID) {

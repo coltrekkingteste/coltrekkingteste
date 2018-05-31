@@ -230,6 +230,22 @@ app.post("/finalizar-evento", function(req, res) {
 	}
 });
 
+
+
+//*****Finalizar Evento Prelecao - sem cadastrar fator k*****//
+app.post("/finalizar-evento-prelecao", function(req, res) {
+	if(!req.session.usuarioLogado.ID) {
+		res.send(false);
+	} else {
+		handleDatabase(req, res, function(req, res, connection) {
+			finalizarEventoPrelecaoDB(req, req.body, connection, function(status) {
+				res.send(status);
+			});
+		});
+	}
+});
+
+
 //*****Excluir Evento*****//
 app.post("/excluir-evento", function(req, res) {
 	if(!req.session.usuarioLogado.ID) {
@@ -561,6 +577,37 @@ function finalizarEventoDB(req, post, connection, callback) {
 		callback(false);
 	}
 }
+
+
+
+
+//*****Finalizar Evento Prelecao - Sem cadastrar fator k*****//
+function finalizarEventoPrelecaoDB(req, post, connection, callback) {
+	var controle = true;
+	
+	if(req.session.usuarioLogado.Admin) {
+		var promessa = new Promise(function(resolve, reject) {
+		});
+		
+		promessa.then(function() {
+			connection.query('UPDATE `evento` SET Finalizado = 1 WHERE ID = ?', post.eventoID, function(err, rows, fields) {
+				connection.release();
+				
+				if(!err) {
+					callback(controle);
+				} else {
+					controle = false;
+				}
+			});
+		});
+	} else {
+		callback(false);
+	}
+}
+
+
+
+
 
 //*****Excluir Evento*****//
 function excluirEventoDB(req, post, connection, callback) {
