@@ -211,7 +211,7 @@ nav .tabs {
 #news-feed a {
   color: #ff6e40; }
 
-/*****CARDS EVENTOS*****/
+/*****CARDS EVENTOS FINALIZADOS*****/
 #eventos .card-content {
   font-size: 16px; }
   #eventos .card-content .topico-info {
@@ -235,21 +235,21 @@ nav .tabs {
 
 
 
-/*****CARDS EVENTOS FINALIZADOS*****/
-#eventos-finalizados .card-content {
+/*****CARDS EVENTOS DISPONIVEIS*****/
+#eventos-disponiveis .card-content {
   font-size: 16px; }
-  #eventos-finalizados .card-content .topico-info {
+  #eventos-disponiveis .card-content .topico-info {
     font-weight: 500; }
-  #eventos-finalizados .card-content .dropdown-button {
+  #eventos-disponiveis .card-content .dropdown-button {
     color: #000;
     margin-top: 15px; }
-  #eventos-finalizados .card-content .dropdown-content li a {
+  #eventos-disponiveis .card-content .dropdown-content li a {
     color: #000 !important; }
-  #eventos-finalizados .card-content .dropdown-content .finalizador {
+  #eventos-disponiveis .card-content .dropdown-content .finalizador {
     color: #4caf50 !important; }
-  #eventos-finalizados .card-content .dropdown-content .excluidor {
+  #eventos-disponiveis .card-content .dropdown-content .excluidor {
     color: #f44336 !important; }
-  #eventos-finalizados .card-content .countdownDisponibilidade {
+  #eventos-disponiveis .card-content .countdownDisponibilidade {
     margin-top: 16px !important;
     margin-bottom: -14px !important;
     color: #ff6e40 !important;
