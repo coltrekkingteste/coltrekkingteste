@@ -198,20 +198,20 @@ nav .tabs {
   color: #ff6e40; }
 
 /*****CARDS EVENTOS*****/
-#eventos .card-content {
+#eventoss .card-content {
   font-size: 16px; }
-  #eventos .card-content .topico-info {
+  #eventoss .card-content .topico-info {
     font-weight: 500; }
-  #eventos .card-content .dropdown-button {
+  #eventoss .card-content .dropdown-button {
     color: #000;
     margin-top: 15px; }
-  #eventos .card-content .dropdown-content li a {
+  #eventoss .card-content .dropdown-content li a {
     color: #000 !important; }
-  #eventos .card-content .dropdown-content .finalizador {
+  #eventoss .card-content .dropdown-content .finalizador {
     color: #4caf50 !important; }
-  #eventos .card-content .dropdown-content .excluidor {
+  #eventoss .card-content .dropdown-content .excluidor {
     color: #f44336 !important; }
-  #eventos .card-content .countdownDisponibilidade {
+  #eventoss .card-content .countdownDisponibilidade {
     margin-top: 16px !important;
     margin-bottom: -14px !important;
     color: #ff6e40 !important;
