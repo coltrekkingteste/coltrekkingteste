@@ -279,15 +279,15 @@
 
 
 											<!--Card Action COUNTDOWN-->
-											<div ng-show="!evento.Disponivel">
+											<div ng-show="!evento.Disponivel" id="contarNumeroDeEventos">
 												<aCountdownAzul onclick="return false;">Disponível em {{evento.Countdown}}</aCountdownAzul>
 											</div>
-
+	
 											<!-- Countdown de Disponibilidade -->
-											<div ng-if="evento.Disponivel == 1">
+											<div ng-if="evento.Disponivel == 1" id="contarNumeroDeEventos">
 												<aCountdownVerde onclick="return false;">Inscrições encerram em {{evento.CountdownDisponibilidade}}</aCountdownVerde>
 											</div>
-
+	
 											<div ng-if="evento.Disponivel == 2">
 												<aCountdownLaranja onclick="return false;">Encerrado</aCountdownLaranja>
 											</div>
@@ -446,8 +446,6 @@
 
 
 
-
-
 					<!--Ranking-->
 					<div ng-controller="RankingController as Ranking">
 						<div id="ranking">
@@ -491,6 +489,11 @@
 				<div ng-view></div>
 			</div>
 		</div>
+
+		<script>
+			var contarNumeroEventos = document.getElementById('contarNumeroDeEventos');
+			console.log(contarNumeroEventos);
+		</script>
 
 		<!--Adiciona materialize.js-->
 		<script src="../node_modules/materialize-css/dist/js/materialize.min.js"></script>	
