@@ -464,24 +464,7 @@
 							<div class="row modulo-wrapper">
 								<!--Fixacoes-->
 								<div class="container col hide-on-med-and-down l4 right">
-									<!--Eventos Cadastrados-->
-									<div class="card" id="card-confirmados">
-										<div class="card-content">
-											<span class="card-title">Eventos Confirmados por Você</span>
-											
-											<!-- Lista de Eventos Confirmados -->
-											<ul>
-												<li ng-repeat="confirmados in eventosConfirmados">
-													<i class="tiny material-icons">label_outline</i>
-													{{confirmados.Nome}}
-												</li>
-											</ul>
-											
-											<!-- Mensagem Default -->
-											<p ng-show="eventosConfirmados.length == 0">Você não confirmou presença em evento algum</p>
-										</div>
-									</div>
-									
+								
 									<!-- Scroll Spy -->
 									<ul class="section table-of-contents">
 										<li ng-repeat="evento in eventos" ng-if="evento.Finalizado == 0">
