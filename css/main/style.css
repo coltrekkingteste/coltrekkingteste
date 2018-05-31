@@ -233,6 +233,30 @@ nav .tabs {
     text-transform: uppercase !important;
     font-size: 14px !important; }
 
+
+
+/*****CARDS EVENTOS FINALIZADOS*****/
+#eventos-finalizados .card-content {
+  font-size: 16px; }
+  #eventos-finalizados .card-content .topico-info {
+    font-weight: 500; }
+  #eventos-finalizados .card-content .dropdown-button {
+    color: #000;
+    margin-top: 15px; }
+  #eventos-finalizados .card-content .dropdown-content li a {
+    color: #000 !important; }
+  #eventos-finalizados .card-content .dropdown-content .finalizador {
+    color: #4caf50 !important; }
+  #eventos-finalizados .card-content .dropdown-content .excluidor {
+    color: #f44336 !important; }
+  #eventos-finalizados .card-content .countdownDisponibilidade {
+    margin-top: 16px !important;
+    margin-bottom: -14px !important;
+    color: #ff6e40 !important;
+    font-weight: 400 !important;
+    text-transform: uppercase !important;
+    font-size: 14px !important; }
+
 #card-confirmados {
   position: fixed;
   margin-right: 6%; }
