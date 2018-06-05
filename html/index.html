@@ -233,8 +233,8 @@
 								<div ng-if="evento.Finalizado == 0">
 									<script>
 										contarNumeroEventosDisponiveis++;
-										if(contarNumeroEventosDisponiveis <= 1){
-											console.log("Nao ha eventos disponiveis!");
+										if(contarNumeroEventosDisponiveis > 1){
+											console.log("Ha eventos disponiveis!");
 										}
 									</script>
 								</div>
