@@ -208,19 +208,6 @@
 						var contarNumeroEventosDisponiveis=0;
 					</script>
 
-					<!-- Repitir todos os eventos e entao verificar se ha eventos disponiveis. Se sim, somar mais um na variavel que conta o numero de eventos -->
-					<div ng-repeat="evento in eventos">
-						<div ng-if="evento.Finalizado == 0">
-							<script>
-								contarNumeroEventosDisponiveis++;
-								console.log("Numero parcial: " + contarNumeroEventosDisponiveis);
-							</script>
-						</div>
-					</div>
-
-					<script>
-						console.log("Numero de eventos total: " + contarNumeroEventosDisponiveis);
-					</script>
 
 					<!--Eventos Disponiveis-->
 					<div ng-controller="EventosController">
@@ -240,6 +227,25 @@
 								<!--Cria os cards de evento-->
 								<div class="container col s12 l7" ng-repeat="evento in eventos">
 									<div class="card card-evento section scrollspy" ng-attr-id="{{evento.ID}}" ng-if="evento.Finalizado == 0">																													
+
+
+								<!-- Somar mais um na variavel que conta o numero de eventos -->
+								<div ng-if="evento.Finalizado == 0">
+										<script>
+											contarNumeroEventosDisponiveis++;
+											console.log("Numero parcial: " + contarNumeroEventosDisponiveis);
+										</script>
+									</div>
+				
+								<script>
+									console.log("Numero de eventos total 1: " + contarNumeroEventosDisponiveis);
+								</script>
+
+
+
+
+
+
 
 										<!--Cabecalho-->
 										<div class="card-image">
@@ -443,7 +449,9 @@
 
 
 
-
+					<script>
+						console.log("Numero de eventos total geral: " + contarNumeroEventosDisponiveis);
+					</script>
 
 
 
