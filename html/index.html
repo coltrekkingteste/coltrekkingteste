@@ -203,7 +203,7 @@
 						</div>
 					</div>
 
-
+					<!-- declarar variavel "contarNumeroEventosDisponiveis" para saber se nao ha eventos disponiveis e entao colocar a mensagem padrao: "Desculpe, nao ha evetos disponiveis" -->
 					<script>
 						var contarNumeroEventosDisponiveis=0;
 					</script>
@@ -226,11 +226,11 @@
 								<!--Cria os cards de evento-->
 								<div class="container col s12 l7" ng-repeat="evento in eventos">
 									<div class="card card-evento section scrollspy" ng-attr-id="{{evento.ID}}" ng-if="evento.Finalizado == 0">
-												
+											
+										<!-- Se o evento nao esta finalizado, contar mais um para o numero de eventos -->
 										<div ng-if="evento.Finalizado == 0">
 											<script>
 												contarNumeroEventosDisponiveis++;
-												console.log(contarNumeroEventosDisponiveis);
 											</script>
 										</div>
 
@@ -272,12 +272,12 @@
 
 
 											<!--Card Action COUNTDOWN-->
-											<div ng-show="!evento.Disponivel" id="contarNumeroDeEventos">
+											<div ng-show="!evento.Disponivel">
 												<aCountdownAzul onclick="return false;">Disponível em {{evento.Countdown}}</aCountdownAzul>
 											</div>
 	
 											<!-- Countdown de Disponibilidade -->
-											<div ng-if="evento.Disponivel == 1" id="contarNumeroDeEventos">
+											<div ng-if="evento.Disponivel == 1">
 												<aCountdownVerde onclick="return false;">Inscrições encerram em {{evento.CountdownDisponibilidade}}</aCountdownVerde>
 											</div>
 	
@@ -438,6 +438,9 @@
 					</div>
 
 
+					<script>
+						console.log(contarNumeroEventosDisponiveis);
+					</script>
 
 
 
