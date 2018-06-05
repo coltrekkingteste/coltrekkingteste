@@ -204,7 +204,9 @@
 					</div>
 
 
-
+					<script>
+						var contarNumeroEventosDisponiveis=0;
+					</script>
 
 					<!--Eventos Disponiveis-->
 					<div ng-controller="EventosController">
@@ -225,7 +227,12 @@
 								<div class="container col s12 l7" ng-repeat="evento in eventos">
 									<div class="card card-evento section scrollspy" ng-attr-id="{{evento.ID}}" ng-if="evento.Finalizado == 0">
 												
-										
+										<div ng-if="evento.Finalizado == 0">
+											<script>
+												contarNumeroEventosDisponiveis++;
+												console.log(contarNumeroEventosDisponiveis);
+											</script>
+										</div>
 
 										
 										
@@ -729,11 +736,6 @@
 				<div ng-view></div>
 			</div>
 		</div>
-
-		<script>
-			var contarNumeroEventos = document.getElementById('contarNumeroDeEventos');
-			console.log(contarNumeroEventos);
-		</script>
 
 		<!--Adiciona materialize.js-->
 		<script src="../node_modules/materialize-css/dist/js/materialize.min.js"></script>	
