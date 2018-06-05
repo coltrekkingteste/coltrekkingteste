@@ -279,7 +279,7 @@
 											<ul ng-if="usuario.Admin" ng-attr-id="{{'menu-card' + evento.ID}}" class="dropdown-content">
 												<!-- Mostrar Esse finalizar evento quando o tempo para inscricao estiver encerrado -->
 												<div ng-if="evento.Disponivel == 2">
-													<li><a href="#!" class="finalizador" onclick="return false;" ng-click="finalizarEventoPrelecao(evento.ID)">Finalizar Evento</a></li>
+													<li><a href="#!" class="finalizador" onClick='parent.location="javascript:location.reload()"' ng-click="finalizarEventoPrelecao(evento.ID)">Finalizar Evento</a></li>
 												</div>
 
 
