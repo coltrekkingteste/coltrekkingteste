@@ -204,9 +204,22 @@
 					</div>
 
 					<!-- declarar variavel "contarNumeroEventosDisponiveis" para saber se nao ha eventos disponiveis e entao colocar a mensagem padrao: "Desculpe, nao ha evetos disponiveis" -->
-					<!-- Ele comeca com 2, entao se ha eventos disponiveis ele subtrai 1, e depois verifica se ele eh menor que 1, se sim, colocar mensagem padrao -->
 					<script>
-						var contarNumeroEventosDisponiveis=2;
+						var contarNumeroEventosDisponiveis=0;
+					</script>
+
+					<!-- Repitir todos os eventos e entao verificar se ha eventos disponiveis. Se sim, somar mais um na variavel que conta o numero de eventos -->
+					<div ng-repeat="evento in eventos">
+						<div ng-if="evento.Finalizado == 0">
+							<script>
+								contarNumeroEventosDisponiveis++;
+								console.log("Numero parcial: " + contarNumeroEventosDisponiveis);
+							</script>
+						</div>
+					</div>
+
+					<script>
+						console.log("Numero de eventos total: " + contarNumeroEventosDisponiveis);
 					</script>
 
 					<!--Eventos Disponiveis-->
@@ -226,21 +239,8 @@
 								
 								<!--Cria os cards de evento-->
 								<div class="container col s12 l7" ng-repeat="evento in eventos">
-									<div class="card card-evento section scrollspy" ng-attr-id="{{evento.ID}}" ng-if="evento.Finalizado == 0">
-											
-										<!-- Se o evento nao esta finalizado, contar menos um para o numero de eventos -->
-										<div ng-if="evento.Finalizado == 0">
-											<script>
-												contarNumeroEventosDisponiveis--;
-											</script>
-										</div>
+									<div class="card card-evento section scrollspy" ng-attr-id="{{evento.ID}}" ng-if="evento.Finalizado == 0">																													
 
-										<script>
-											console.log(contarNumeroEventosDisponiveis);
-										</script>
-										
-										
-										
 										<!--Cabecalho-->
 										<div class="card-image">
 											<!--Imagem-->
