@@ -552,72 +552,75 @@ function finalizarEventoDB(req, post, connection, callback) {
 	
 
 	if(req.session.usuarioLogado.Admin) {
-		post.pessoas.forEach(function(elem, index, array) {
+		var promessa = new Promise(function(resolve, reject) {
+			post.pessoas.forEach(function(elem, index, array) {
 
-			connection.query('UPDATE `evento` SET fatorKevento = ? WHERE ID = ?', [post.fatork, post.eventoID], function(err, rows, fields) {
-				connection.release();
-	
-				if(!err) {
-					callback(true);
-				}
-				else {
-					callback(false);
-				}
-			});
-			connection.query('UPDATE `evento` SET subdesc = ? WHERE ID = ?',  [post.subdesc, post.eventoID], function(err, rows, fields) {
-				connection.release();
-	
-				if(!err) {
-					callback(true);
-				}
-				else {
-					callback(false);
-				}
-			});
+				connection.query('UPDATE `evento` SET fatorKevento = ? WHERE ID = ?', [post.fatork, post.eventoID], function(err, rows, fields) {
+					connection.release();
+		
+					if(!err) {
+						callback(true);
+					}
+					else {
+						callback(false);
+					}
+				});
+				connection.query('UPDATE `evento` SET subdesc = ? WHERE ID = ?',  [post.subdesc, post.eventoID], function(err, rows, fields) {
+					connection.release();
+		
+					if(!err) {
+						callback(true);
+					}
+					else {
+						callback(false);
+					}
+				});
 
-			connection.query('UPDATE `evento` SET distancia = ? WHERE ID = ?',  [post.distancia, post.eventoID], function(err, rows, fields) {			
-				connection.release();
-	
-				if(!err) {
-					callback(true);
-				}
-				else {
-					callback(false);
-				}
-			});
+				connection.query('UPDATE `evento` SET distancia = ? WHERE ID = ?',  [post.distancia, post.eventoID], function(err, rows, fields) {			
+					connection.release();
+		
+					if(!err) {
+						callback(true);
+					}
+					else {
+						callback(false);
+					}
+				});
 
-			connection.query('UPDATE `pessoa-evento` SET fatorKPessoaEvento = ? WHERE IDEvento = ?',  [post.fatork, post.eventoID], function(err, rows, fields) {
-				connection.release();
+				connection.query('UPDATE `pessoa-evento` SET fatorKPessoaEvento = ? WHERE IDEvento = ?',  [post.fatork, post.eventoID], function(err, rows, fields) {
+					connection.release();
+		
+					if(!err) {
+						callback(true);
+					}
+					else {
+						callback(false);
+					}
+				});
+				connection.query('UPDATE `pessoa` SET FatorK = (SELECT SUM(FatorKPessoaEvento) FROM `pessoa-evento` WHERE IDPessoa = ?) WHERE ID = ?',  [elem,elem], function(err, rows, fields) {
+					connection.release();
+		
+					if(!err) {
+						callback(true);
+					}
+					else {
+						callback(false);
+					}
+				});
+				connection.query('UPDATE `evento` SET Finalizado = 1 WHERE ID = ?', [post.eventoID], function(err, rows, fields) {
+					connection.release();
+		
+					if(!err) {
+						callback(true);
+					}
+					else {
+						callback(false);
+					}
+				});
+				
+			});		
+		});
 	
-				if(!err) {
-					callback(true);
-				}
-				else {
-					callback(false);
-				}
-			});
-			connection.query('UPDATE `pessoa` SET FatorK = (SELECT SUM(FatorKPessoaEvento) FROM `pessoa-evento` WHERE IDPessoa = ?) WHERE ID = ?',  [elem,elem], function(err, rows, fields) {
-				connection.release();
-	
-				if(!err) {
-					callback(true);
-				}
-				else {
-					callback(false);
-				}
-			});
-			connection.query('UPDATE `evento` SET Finalizado = 1 WHERE ID = ?', [post.eventoID], function(err, rows, fields) {
-				connection.release();
-	
-				if(!err) {
-					callback(true);
-				}
-				else {
-					callback(false);
-				}
-			});
-			
-		});			
 	} else {
 		callback(false);
 	}
