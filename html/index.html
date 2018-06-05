@@ -203,10 +203,6 @@
 						</div>
 					</div>
 
-					<!-- declarar variavel "contarNumeroEventosDisponiveis" para saber se nao ha eventos disponiveis e entao colocar a mensagem padrao: "Desculpe, nao ha evetos disponiveis" -->
-					<script>
-						var contarNumeroEventosDisponiveis=0;
-					</script>
 
 
 					<!--Eventos Disponiveis-->
@@ -214,9 +210,7 @@
 						<div id="eventos-disponiveis">
 							<div class="row modulo-wrapper">
 
-								<div id="mensagemNaoHaEventosDisponiveis">
-									<h1>Não há eventos disponíveis no momento!</h1>
-								</div>
+
 
 
 								<!--Fixacoes-->
@@ -237,15 +231,7 @@
 
 
 
-										<!-- Somar mais um na variavel que conta o numero de eventos -->
-										<div ng-if="evento.Finalizado == 0">
-											<script>
-												contarNumeroEventosDisponiveis++;
-												if(contarNumeroEventosDisponiveis > 1){
-													console.log("Ha eventos disponiveis!");
-												}
-											</script>
-										</div>
+
 				
 
 
