@@ -582,17 +582,23 @@ function finalizarEventoDB(req, post, connection, callback) {
 
 
 //*****Finalizar Evento Prelecao - Sem cadastrar fator k*****//
-function finalizarEventoPrelecaoDB(req, post, connection, callback) {	
+function finalizarEventoPrelecaoDB(req, post, connection, callback) {
+	var controle = true;
+	
 	if(req.session.usuarioLogado.Admin) {
-		connection.query('UPDATE `evento` SET Finalizado = 1 WHERE ID = ?', post.eventoID, function(err, rows, fields) {
-			connection.release();
+		var promessa = new Promise(function(resolve, reject) {
+		});
 		
-			if(!err) {
-				callback(true);
-			}
-			else {
-				callback(false);
-			}
+		promessa.then(function() {
+			connection.query('UPDATE `evento` SET Finalizado = 1 WHERE ID = ?', post.eventoID, function(err, rows, fields) {
+				connection.release();
+				
+				if(!err) {
+					callback(controle);
+				} else {
+					controle = false;
+				}
+			});
 		});
 	} else {
 		callback(false);
