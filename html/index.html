@@ -231,17 +231,14 @@
 
 								<!-- Somar mais um na variavel que conta o numero de eventos -->
 								<div ng-if="evento.Finalizado == 0">
-										<script>
-											contarNumeroEventosDisponiveis++;
-											console.log("Numero parcial: " + contarNumeroEventosDisponiveis);
-										</script>
-									</div>
+									<script>
+										contarNumeroEventosDisponiveis++;
+										if(contarNumeroEventosDisponiveis <= 1){
+											console.log("Nao ha eventos disponiveis!");
+										}
+									</script>
+								</div>
 				
-								<script>
-									console.log("Numero de eventos total 1: " + contarNumeroEventosDisponiveis);
-								</script>
-
-
 
 
 
@@ -449,9 +446,6 @@
 
 
 
-					<script>
-						console.log("Numero de eventos total geral: " + contarNumeroEventosDisponiveis);
-					</script>
 
 
 
