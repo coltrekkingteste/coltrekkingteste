@@ -229,15 +229,22 @@
 									<div class="card card-evento section scrollspy" ng-attr-id="{{evento.ID}}" ng-if="evento.Finalizado == 0">																													
 
 
-								<!-- Somar mais um na variavel que conta o numero de eventos -->
-								<div ng-if="evento.Finalizado == 0">
-									<script>
-										contarNumeroEventosDisponiveis++;
-										if(contarNumeroEventosDisponiveis > 1){
-											console.log("Ha eventos disponiveis!");
-										}
-									</script>
-								</div>
+										<div id="mensagemNaoHaEventosDisponiveis">
+											<h1>Não há eventos disponíveis no momento!</h1>
+										</div>
+
+
+
+
+										<!-- Somar mais um na variavel que conta o numero de eventos -->
+										<div ng-if="evento.Finalizado == 0">
+											<script>
+												contarNumeroEventosDisponiveis++;
+												if(contarNumeroEventosDisponiveis > 1){
+													console.log("Ha eventos disponiveis!");
+												}
+											</script>
+										</div>
 				
 
 
