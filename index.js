@@ -547,32 +547,53 @@ function cancelarEventoDB(post, connection, callback) {
 
 //*****Finalizar Evento*****//
 function finalizarEventoDB(req, post, connection, callback) {
-	var controle = true;
 	
-	
-
 	if(req.session.usuarioLogado.Admin) {
-		var promessa = new Promise(function(resolve, reject) {
-			post.pessoas.forEach(function(elem, index, array) {
-
-				connection.query('UPDATE `evento` SET fatorKevento = ? WHERE ID = ?', [post.fatork, post.eventoID], function(err, rows, fields) {
-				});
-				connection.query('UPDATE `evento` SET subdesc = ? WHERE ID = ?',  [post.subdesc, post.eventoID], function(err, rows, fields) {
-				});
-
-				connection.query('UPDATE `evento` SET distancia = ? WHERE ID = ?',  [post.distancia, post.eventoID], function(err, rows, fields) {
-				});
-
-				connection.query('UPDATE `pessoa-evento` SET fatorKPessoaEvento = ? WHERE IDEvento = ?',  [post.fatork, post.eventoID], function(err, rows, fields) {
-				});
-				connection.query('UPDATE `pessoa` SET FatorK = (SELECT SUM(FatorKPessoaEvento) FROM `pessoa-evento` WHERE IDPessoa = ?) WHERE ID = ?',  [elem,elem], function(err, rows, fields) {
-				});
-				connection.query('UPDATE `evento` SET Finalizado = 1 WHERE ID = ?', [post.eventoID], function(err, rows, fields) {
-				});
-				
-			});		
-		});
-	
+		post.pessoas.forEach(function(elem, index, array) {
+			connection.query('UPDATE `evento` SET fatorKevento = ? WHERE ID = ?', [post.fatork, post.eventoID], function(err, rows, fields) {
+				if(!err) {
+					connection.query('UPDATE `evento` SET subdesc = ? WHERE ID = ?',  [post.subdesc, post.eventoID], function(err, rows, fields) {
+						if(!err) {
+							connection.query('UPDATE `evento` SET distancia = ? WHERE ID = ?',  [post.distancia, post.eventoID], function(err, rows, fields) {
+								if(!err) {
+									connection.query('UPDATE `pessoa-evento` SET fatorKPessoaEvento = ? WHERE IDEvento = ?',  [post.fatork, post.eventoID], function(err, rows, fields) {
+										if(!err) {
+											connection.query('UPDATE `pessoa` SET FatorK = (SELECT SUM(FatorKPessoaEvento) FROM `pessoa-evento` WHERE IDPessoa = ?) WHERE ID = ?',  [elem,elem], function(err, rows, fields) {
+												if(!err) {
+													connection.query('UPDATE `evento` SET Finalizado = 1 WHERE ID = ?', [post.eventoID], function(err, rows, fields) {
+														connection.release();
+														if(!err) {
+															callback(true);
+														}
+														else {
+															callback(false);
+														}
+													});
+												}
+												else {
+													callback(false);
+												}
+											});
+										}
+										else {
+											callback(false);
+										}
+									});
+								}
+								else {
+									callback(false);
+								}
+							});
+						} else {
+							callback(false);
+						}
+					});			
+				} else {
+					callback(false);
+				}
+			});				
+		});		
+		
 	} else {
 		callback(false);
 	}
