@@ -513,12 +513,12 @@
 
 
 											<!--Card Action COUNTDOWN-->
-											<div ng-show="!evento.Disponivel" id="contarNumeroDeEventos">
+											<div ng-show="!evento.Disponivel">
 												<aCountdownAzul onclick="return false;">Disponível em {{evento.Countdown}}</aCountdownAzul>
 											</div>
 
 											<!-- Countdown de Disponibilidade -->
-											<div ng-if="evento.Disponivel == 1" id="contarNumeroDeEventos">
+											<div ng-if="evento.Disponivel == 1">
 												<aCountdownVerde onclick="return false;">Inscrições encerram em {{evento.CountdownDisponibilidade}}</aCountdownVerde>
 											</div>
 
