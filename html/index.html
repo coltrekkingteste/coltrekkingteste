@@ -90,8 +90,7 @@
 						<div class="container nav-container">
 							<div class="nav-content">
 								<ul class="tabs tabs-transparent tabs-fixed-width" ng-show="$location.path() === '/'"> <!--So aparece na Pagina Principal-->
-									<li class="tab"><a href="#eventos-disponiveis"><img class="icones" src="../rsc/icon/evento disponivel.png"/></a></li>
-									<li class="tab"><a href="#eventos"><img class="icones" src="../rsc/icon/evento finalizado.png"/></a></li>
+									<li class="tab"><a href="#eventos"><img class="icones" src="../rsc/icon/evento disponivel.png"/></a></li>
 									<li class="tab"><a href="#news-feed"><img class="icones" src="../rsc/icon/informacoes.png"/></a></li>
 									<li class="tab"><a href="#ranking"><img class="icones" src="../rsc/icon/lista negra.png"/></a></li>
 									<li class="tab"><a href="#ranking"><img class="icones" src="../rsc/icon/ranking.png"/></a></li>
@@ -210,10 +209,11 @@
 					</script>
 
 
-					<!--Eventos Disponiveis-->
+					<!--Eventos-->
 					<div ng-controller="EventosController">
 						<div id="eventos">
-							<div id="eventos-abertos">
+							<!--Eventos Disponiveis-->
+							<div id="exibirEventosDisponiveis">
 								<div class="row modulo-wrapper">
 
 									<!-- Layout padrao, para quando nao ha eventos disponiveis. -->
@@ -463,8 +463,8 @@
 
 
 
-					<!--Eventos Finalizados-->
-							<div id="eventosFinalizados">
+							<!--Eventos Finalizados-->
+							<div id="exibirEventosFinalizados">
 								<div class="row modulo-wrapper">
 									<!--Fixacoes-->
 									<div class="container col hide-on-med-and-down l4 right">
