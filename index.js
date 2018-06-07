@@ -26,10 +26,10 @@ app.use(express.static('./', {
 //*****MySQL*****//
 var pool = mysql.createPool({
 	connectionLimit : 300,
-	host	: 'us-cdbr-iron-east-05.cleardb.net',
-	user	: 'b8da9162116c36',
-	password: '6790537bc890f75',
-	database: 'heroku_d85ec50b8eb7067',
+	host	: '150.164.129.71',
+	user	: 'guilherme',
+	password: 'coltec2018',
+	database: 'coltrekking',
 	debug	: false
 });
 
