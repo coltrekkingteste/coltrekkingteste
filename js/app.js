@@ -518,9 +518,6 @@
 			httpService.post('/confirmados-por-mim', data, function(answer) {
 				$rootScope.eventosConfirmados = answer;
 				
-				//Seta margin top do scroll spy em funcao da altura do card
-				var altura = $('#card-confirmados').height() + 36;
-				$('.table-of-contents').css("margin-top", altura + "px");
 			});
 		}
 		
