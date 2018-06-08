@@ -375,6 +375,10 @@ h3{
   margin-top: -53px !important;
 }
 
+/*Margem top nas fixacoes*/
+#margemTopNasfixacoes{
+  margin-top: -60px;
+}
 
 /*Margem top dos eventos finalizados*/
 #margemTopEventosFinalizados{
