@@ -351,105 +351,29 @@ h3{
   }
 }
 /*************************************************/
-/*Botao eventos disponiveis e finalizados*/
-.btn-small:hover{
-  text-align: center;
-  background-color: #8BC34A;
-  color: white;
-}
-.btn-small{
-  font-size: 2vw;
-  color: #8BC34A;
-  margin-left: 20px;
-  margin-right: 20px;
-  width: 18vw;
-}
 
-.botoesDisponivelFinalizado{
-    line-height: 3vw;
-    height: 100px;
-    text-align: center;
-  }
+/*TABS Eventos Disponiveis e Finalizados*/
+.tabsEventos.tabs .tabsEventos.tab a{
+  color:#8BC34A;
+  background-color: #FAFAFA;
+  font-size: 120%;
+}
+.tabsEventos.tabs .tabsEventos.tab a:hover,.tabs .tabsEventos.tab a.active {
+  background-color: #FAFAFA;
+  color:#699933; /*Cor mais forte na hora que encosta*/
+}
+.tabsEventos.tabs .indicator {
+  background-color:#8BC34A;
+}
 
 @media screen and (max-width: 992px) {
-  .btn-small{
-    font-size: 3.5vw;
-    width: 23vw;
-  }
-  
-  .botoesDisponivelFinalizado{
-    line-height: 6vw;
+  .tabsEventos.tabs .tabsEventos.tab a{
+    font-size: 150%;
   }
 }
 @media screen and (max-width: 600px) {
-  .btn-small{
-    font-size: 180%;
-    width: 170px;
-    margin-top: 10px;
-  }
-  
-  .botoesDisponivelFinalizado{
-    line-height: 7vw;
-  }
-}
-@media screen and (max-width: 471px) {
-  .btn-small{
-    font-size: 190%;
-    width: 150px;
-    margin-top: 15px;
-    margin-left:5px;
-    margin-right: 5px;
-  }
-  .botoesDisponivelFinalizado{
-    line-height: 9vw;
-  }
-}
-@media screen and (max-width: 360px) {
-  .btn-small{
-    font-size: 180%;
-    width: 140px;
-    margin-top: 15px;
-    margin-left:7px;
-    margin-right: 7px;
-  }
-  .botoesDisponivelFinalizado{
-    line-height: 10vw;
-  }
-}
-@media screen and (max-width: 347px) {
-  .btn-small{
-    font-size: 160%;
-    width: 125px;
-    margin-top: 15px;
-    margin-left:7px;
-    margin-right: 7px;
-  }
-  .botoesDisponivelFinalizado{
-    line-height: 10vw;
-  }
-}
-@media screen and (max-width: 313px) {
-  .btn-small{
-    font-size: 150%;
-    width: 120px;
-    margin-top: 15px;
-    margin-left: 0px;
-    margin-right: 0px;
-  }
-  .botoesDisponivelFinalizado{
-    line-height: 11vw;
-  }
-}
-@media screen and (max-width: 271px) {
-  .btn-small{
-    font-size: 130%;
-    width: 100px;
-    margin-top: 15px;
-    margin-left: -3px;
-    margin-right: -3px;
-  }
-  .botoesDisponivelFinalizado{
-    line-height: 13vw;
+  .tabsEventos.tabs .tabsEventos.tab a{
+    font-size: 100%;
   }
 }
 
