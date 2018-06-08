@@ -374,16 +374,6 @@ h3{
   margin-top: -53px !important;
 }
 
-/*Margem top nas fixacoes*/
-#margemTopNasfixacoes{
-  margin-top: -60px;
-}
-
-/*Margem top dos eventos finalizados*/
-#margemTopEventosFinalizados{
-  margin-top: -60px;
-}
-
 /*Cores dos CountDowns*/
 aCountdownVerde {
   color: #8BC34A !important;
