@@ -370,7 +370,12 @@ h3{
 }
 
 
+/*Remover margem dos eventos finalizados*/
+#exibirEventosFinalizados{
+  margin-top: -53px !important;
+}
 
+/*Cores dos CountDowns*/
 aCountdownVerde {
   color: #8BC34A !important;
   font-weight: bold;
