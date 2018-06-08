@@ -277,22 +277,22 @@ nav .tabs {
 /*************************************************/
 /* Mensagem pra quando nao ha eventos disponivel */
 h1{
-  margin-top: 50px !important;
+  margin-top: -60px !important;
   text-align: center;
   font-size: 2.7vw;
   color: #8BC34A;
 }
 
 .imagemNaoHaEventosDisponivel{
-  width: 27%;
+  width: 25%;
   margin: auto;
   position: absolute;
-  margin-top: 200px;
+  margin-top: 250px;
   top: 0; left: 0; bottom: 0; right: 0;
 }
 
 h2{
-  margin-top: 30vw !important;
+  margin-top: 26.5vw !important;
   text-align: center;
   font-size: 2.7vw;
   color: #8BC34A;
@@ -307,47 +307,39 @@ h3{
 
 @media screen and (max-width: 992px) {
   h1{
-    font-size: 7vw;
+    margin-top: -45px !important;
+    font-size: 6vw;
   }
   .imagemNaoHaEventosDisponivel{
-    width: 70%;
-    margin-top: 280px;
+    width: 55%;
+    margin-top: 350px;
   }
   h2{
-    margin-top: 73vw !important;
-    text-align: center;
+    margin-top: 73% !important;
     font-size: 4.7vw;
-    color: #8BC34A;
   }
   h3{
     margin-top: -2vw;
-    text-align: center;
     font-size: 3.5vw;
-    color: #8BC34A;
-  }
-}
-@media screen and (max-width: 760px) {
-  h2{
-    margin-top:77vw !important;
   }
 }
 
 @media screen and (max-width: 600px) {
   h1{
-    font-size: 8vw;
+    margin-top: -60px !important;
+    font-size: 5vw;
   }
   .imagemNaoHaEventosDisponivel{
-    margin-top: 240px;
+    width: 70%;
+    margin-top: 235px;
+  }
+  h2{
+    margin-top: 85% !important;
+    font-size: 5vw;
   }
   h3{
     margin-top: -20px;
-    font-size: 4vw;
-  }
-}
-
-@media screen and (max-width: 420px) {
-  h2{
-    margin-top: 90vw !important;
+    font-size: 3.5vw;
   }
 }
 /*************************************************/
