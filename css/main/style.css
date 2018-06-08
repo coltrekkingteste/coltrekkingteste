@@ -259,6 +259,7 @@ nav .tabs {
 
 #card-confirmados {
   position: fixed;
+  margin-top:-60px;
   margin-right: 6%; }
   #card-confirmados ul {
     margin-bottom: 0px; }
