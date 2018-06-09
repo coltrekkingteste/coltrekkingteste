@@ -217,6 +217,14 @@
 										</thead>
 
 										<div ng-repeat="evento in eventos">
+
+
+											<tbody>
+													<td>{{$index + 1}}º</td>
+													<td>{{evento.Confirmados}}</td>
+											</tbody>
+
+
 											<tbody>
 												<tr ng-repeat="pessoa in evento.Confirmados" ng-class="{espera: $index >= evento.NumeroMax}">
 													<td>{{$index + 1}}º</td>
