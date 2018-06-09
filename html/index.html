@@ -219,10 +219,13 @@
 										<tbody>
 											<tr ng-repeat="evento in eventos" >
 												<td>
-													<p ng-repeat="confirmado in evento.Confirmados">	
+													<p ng-repeat="confirmado in evento.Confirmados" ng-if="confirmado.listaNegraEvento != 0">	
 														{{confirmado.Nome}}
+													</p>
+												</td>
+												<td>
+													<p ng-repeat="confirmado in evento.Confirmados" ng-if="confirmado.listaNegraEvento != 0">	
 														{{confirmado.listaNegraEvento}}														
-														<label class="nomeExcluirUsuario" ng-attr-for="{{confirmado.ID}}"><a id="btn" href="#" class="botaoExcluirUsuario" onClick="$(this).css('background-color','#FAFAFA');" ng-click="excluirUsuario(confirmado.ID, confirmado.IDEvento)">Remover</a> {{confirmado.Nome}} </label>
 													</p>
 												</td>
 											</tr>
