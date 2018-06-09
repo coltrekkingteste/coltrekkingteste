@@ -380,7 +380,10 @@ h3{
 
 /*Tamanho dos icones lista negra e remover - na hora de cadastrar fator k*/
 #iconListaNegraERemover{
-  width: 20px;
+  width: 25px;
+}
+#iconListaNegraERemover:hover{
+  background-color:#D8D8D8;
 }
 
 /*Cores dos CountDowns*/
@@ -402,30 +405,6 @@ aCountdownLaranja {
   aPontuacao {
   color: #000000 !important;
  }
-
-
-/*BOTAO REMOVER USUARIO*/
-.botaoExcluirUsuario {
-	background-color:#44c767;
-	-moz-border-radius:28px;
-	-webkit-border-radius:28px;
-	border-radius:28px;
-	border:1px solid #FAFAFA;
-	display:inline-block;
-	cursor:pointer;
-	color:#FAFAFA;
-	font-family:Arial;
-	font-size:13px;
-	padding:0px 4px;
-	text-decoration:none;
-}
-.botaoExcluirUsuario:hover {
-	background-color:#a0d47d;
-}
-.botaoExcluirUsuario:active {
-	position:relative;
-	top:1px;
-}
 
 
 /*CHECKBOX INVISIVEL*/
