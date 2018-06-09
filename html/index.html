@@ -433,17 +433,13 @@
 												<p class="modal-header">Editar Fator K</p>
 												
 												<form>								
-													<aCountdownVerde>Atenção! Após remover um usuário a ação não poderá ser desfeita.</aCountdownVerde>
+													<aCountdownLaranja>Atenção! Após remover um usuário a ação não poderá ser desfeita.</aCountdownLaranja>
 													<div class="row">
 														<p ng-repeat="confirmado in evento.Confirmados" class="checkboxConfirmados col s12 m6">																
-															<label class="nomeExcluirUsuario" ng-attr-for="{{confirmado.ID}}">
-																<a id="btn" href="#" class="botaoExcluirUsuario" onClick="$(this).css('background-color','#FAFAFA');" ng-click="excluirUsuario(confirmado.ID, confirmado.IDEvento)">Lista Negra</a> 
-																<a id="btn" href="#" class="botaoExcluirUsuario" onClick="$(this).css('background-color','#FAFAFA');" ng-click="excluirUsuario(confirmado.ID, confirmado.IDEvento)">Remover</a>			
-																{{confirmado.Nome}} 
-															</label>
+															<label class="nomeExcluirUsuario" ng-attr-for="{{confirmado.ID}}"><a id="btn" href="#" class="botaoExcluirUsuario" onClick="$(this).css('background-color','#FAFAFA');" ng-click="excluirUsuario(confirmado.ID, confirmado.IDEvento)">Remover</a> {{confirmado.Nome}} </label>
 														</p>
 													</div>
-													<aCountdownVerde>Cadastrar Prontução</aCountdownVerde>
+													<aCountdownLaranja>Cadastrar Prontução</aCountdownLaranja>
 													<div class="row">
 														<!-- Kilometragem -->
 														<div class="input-field col s12 m5 l3">
@@ -681,13 +677,17 @@
 												<p class="modal-header">Editar Fator K</p>
 												
 												<form>								
-													<aCountdownLaranja>Atenção! Após remover um usuário a ação não poderá ser desfeita.</aCountdownLaranja>
+													<aCountdownVerde>Atenção! Após remover um usuário a ação não poderá ser desfeita.</aCountdownVerde>
 													<div class="row">
 														<p ng-repeat="confirmado in evento.Confirmados" class="checkboxConfirmados col s12 m6">																
-															<label class="nomeExcluirUsuario" ng-attr-for="{{confirmado.ID}}"><a id="btn" href="#" class="botaoExcluirUsuario" onClick="$(this).css('background-color','#FAFAFA');" ng-click="excluirUsuario(confirmado.ID, confirmado.IDEvento)">Remover</a> {{confirmado.Nome}} </label>
+															<label class="nomeExcluirUsuario" ng-attr-for="{{confirmado.ID}}">
+																<a id="btn" href="#" class="botaoExcluirUsuario" onClick="$(this).css('background-color','#FAFAFA');" ng-click="excluirUsuario(confirmado.ID, confirmado.IDEvento)">Lista Negra</a> 
+																<a id="btn" href="#" class="botaoExcluirUsuario" onClick="$(this).css('background-color','#FAFAFA');" ng-click="excluirUsuario(confirmado.ID, confirmado.IDEvento)">Remover</a>			
+																{{confirmado.Nome}} 
+															</label>
 														</p>
 													</div>
-													<aCountdownLaranja>Cadastrar Prontução</aCountdownLaranja>
+													<aCountdownVerde>Cadastrar Prontução</aCountdownVerde>
 													<div class="row">
 														<!-- Kilometragem -->
 														<div class="input-field col s12 m5 l3">
