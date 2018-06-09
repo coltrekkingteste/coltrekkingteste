@@ -246,6 +246,20 @@ app.post("/finalizar-evento-prelecao", function(req, res) {
 });
 
 
+//*****Adicionar usuario na lista negra*****//
+app.post("/adicionar-lista-negra", function(req, res) {
+	if(!req.session.usuarioLogado.ID) {
+		res.send(false);
+	} else {
+		handleDatabase(req, res, function(req, res, connection) {
+			adicionarListaNegraDB(req, req.body, connection, function(status) {
+				res.send(status);
+			});
+		});
+	}
+});
+
+
 //*****Excluir Evento*****//
 app.post("/excluir-evento", function(req, res) {
 	if(!req.session.usuarioLogado.ID) {
@@ -601,6 +615,34 @@ function finalizarEventoPrelecaoDB(req, post, connection, callback) {
 		callback(false);
 	}
 }
+
+
+
+
+//*****Adicionar usuario na lista negra*****//
+function adicionarListaNegraDB(req, post, connection, callback) {	
+	if(req.session.usuarioLogado.Admin) {
+		connection.query('UPDATE `pessoa-evento` SET listaNegraEvento = 1 WHERE IDEvento = ? AND IDPessoa = ?', [post.IDEvento, post.ID], function(err, rows, fields) {
+			if(!err) {
+				connection.query('UPDATE `pessoa` SET ListaNegra = 1 WHERE ID = ?', post.ID, function(err, rows, fields) {
+					connection.release();
+		
+					if(!err) {
+						callback(true);
+					} else {
+						callback(false);
+					}
+				});			
+			} else {
+				callback(false);
+			}
+		});
+	} else {
+		callback(false);
+	}
+}
+
+
 
 
 

@@ -586,6 +586,25 @@
 		}
 
 
+		//Adicionar usuario na lista negra
+		$scope.adicionarListaNegra = function(id, idevento) {
+			var dataPost = {
+				ID: id,
+				IDEvento: idevento
+			}
+
+			//Chama POST Adicionar na lista negra
+			httpService.post('/adicionar-lista-negra', dataPost, function(answer) {
+				//Emite alerta sobre o status da operacao
+				if(answer) {
+					Materialize.toast("Usuario adicionado na lista negra com sucesso!", 2000);					
+					$scope.eventosGetter();
+				} else {
+					Materialize.toast("Erro ao adicionar usuario na lista negra", 3000);
+				}
+			});
+		}
+
 
 
 		
