@@ -796,4 +796,19 @@
 			}.bind(this));
 		});			
 	}]);
+
+	//Lista negra Controller
+	app.controller('listaNegraController', ['HTTPService', '$rootScope', function(httpService, $rootScope) {
+	
+		//Quando EventosController ja acabou
+		$rootScope.$on('dataEventos', function(event) {
+			//Chama listaNegraService
+			httpService.get('/listanegra', function(answer) {
+				if(answer != null) {
+					$rootScope.listanegra = answer;
+				}
+			}.bind(this));
+		});			
+	}]);
+
 })();

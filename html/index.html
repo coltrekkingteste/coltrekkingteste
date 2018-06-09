@@ -91,7 +91,7 @@
 							<div class="nav-content">
 								<ul class="tabs tabs-transparent tabs-fixed-width" ng-show="$location.path() === '/'"> <!--So aparece na Pagina Principal-->
 									<li class="tab"><a href="#eventos">Eventos</a></li>
-									<li class="tab"><a href="#lista-negra">Lista Negra</a></li>
+									<li class="tab"><a href="#listanegra">Lista Negra</a></li>
 									<li class="tab"><a href="#ranking">Ranking</a></li>
 								</ul>
 							</div>
@@ -199,8 +199,8 @@
 							</div>
 						</div>
 					</div>
-					<div ng-controller="EventosController">
-						<div id="lista-negra">
+					<div ng-controller="listaNegraController">
+						<div id="listanegra">
 							<div class="card">
 								<div class="card-content">
 
@@ -223,7 +223,7 @@
 
 										<!--Linha para cada usuario-->
 										<tbody>
-											<tr ng-repeat="pessoa in eventos">
+											<tr ng-repeat="pessoa in listanegra">
 												<td>{{$index + 1}}º</td>
 												<td>{{pessoa.Nome}}</td>
 												<td>{{pessoa.FatorK.toFixed(1)}}</td>
