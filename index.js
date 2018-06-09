@@ -623,16 +623,10 @@ function finalizarEventoPrelecaoDB(req, post, connection, callback) {
 function adicionarListaNegraDB(req, post, connection, callback) {	
 	if(req.session.usuarioLogado.Admin) {
 		connection.query('UPDATE `pessoa-evento` SET listaNegraEvento = 1 WHERE IDEvento = ? AND IDPessoa = ?', [post.IDEvento, post.ID], function(err, rows, fields) {
+			connection.release();
+
 			if(!err) {
-				connection.query('UPDATE `pessoa` SET ListaNegra = 1 WHERE ID = ?', post.ID, function(err, rows, fields) {
-					connection.release();
-		
-					if(!err) {
-						callback(true);
-					} else {
-						callback(false);
-					}
-				});			
+				callback(true);
 			} else {
 				callback(false);
 			}
