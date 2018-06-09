@@ -577,7 +577,7 @@ function finalizarEventoDB(req, post, connection, callback) {
 				connection.query('UPDATE `evento` SET distancia = ? WHERE ID = ?',  [post.distancia, post.eventoID], function(err, rows, fields) {
 				});
 
-				connection.query('UPDATE `pessoa-evento` SET fatorKPessoaEvento = ? WHERE IDEvento = ?',  [post.fatork, post.eventoID], function(err, rows, fields) {
+				connection.query('UPDATE `pessoa-evento` SET fatorKPessoaEvento = ? WHERE IDEvento = ? AND listaNegraEvento = 0',  [post.fatork, post.eventoID], function(err, rows, fields) {
 				});
 				connection.query('UPDATE `pessoa` SET FatorK = (SELECT SUM(FatorKPessoaEvento) FROM `pessoa-evento` WHERE IDPessoa = ?) WHERE ID = ?',  [elem,elem], function(err, rows, fields) {
 				});
