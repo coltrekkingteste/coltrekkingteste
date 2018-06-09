@@ -217,7 +217,7 @@
 										</thead>
 
 										<tbody>
-											<tr ng-repeat="evento in eventos" >
+											<tr ng-repeat="evento in eventos" style="display: none;">
 												<td>
 													<p ng-repeat="confirmado in evento.Confirmados" ng-if="confirmado.listaNegraEvento != 0">	
 														{{confirmado.Nome}}
@@ -236,6 +236,9 @@
 											</tr>
 										</tbody>
 
+										<script>
+										$("#ListaNegraEventos").parent().parent().css("display", "block");
+										</script>
 
 									</table>
 								</div>
