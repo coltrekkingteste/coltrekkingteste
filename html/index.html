@@ -91,7 +91,7 @@
 							<div class="nav-content">
 								<ul class="tabs tabs-transparent tabs-fixed-width" ng-show="$location.path() === '/'"> <!--So aparece na Pagina Principal-->
 									<li class="tab"><a href="#eventos">Eventos</a></li>
-									<li class="tab"><a href="#news-feed">Lista Negra</a></li>
+									<li class="tab"><a href="#lista-negra">Lista Negra</a></li>
 									<li class="tab"><a href="#ranking">Ranking</a></li>
 								</ul>
 							</div>
@@ -195,6 +195,41 @@
 											</div>
 										</div>
 									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div ng-controller="EventosController">
+						<div id="lista-negra">
+							<div class="card">
+								<div class="card-content">
+
+
+									<!-- Countdown Do Ranking -->
+									<p class="countdownRanking">
+											<!-- O Ranking será zerado em {{ranking.CountdownRanking}} -->
+									</p>
+
+									<!--Tabela-->
+									<table class="striped">
+										<!--Titulos da tabela-->
+										<thead>
+											<tr>
+												<th>Posição</th>
+												<th>Nome</th>
+												<th>Pontuação</th>
+											</tr>
+										</thead>
+
+										<!--Linha para cada usuario-->
+										<tbody>
+											<tr ng-repeat="pessoa in eventos">
+												<td>{{$index + 1}}º</td>
+												<td>{{pessoa.Nome}}</td>
+												<td>{{pessoa.FatorK.toFixed(1)}}</td>
+											</tr>
+										</tbody>
+									</table>
 								</div>
 							</div>
 						</div>
