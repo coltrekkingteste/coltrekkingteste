@@ -682,7 +682,7 @@
 														<h6><img id="iconListaNegraERemover" src="../rsc/icon/remover.png"> Remover (apenas não ganhará a pontuação (Fator K))</h6><br>
 														<aCountdownVerde>Lista de participantes</aCountdownVerde>
 													<div class="row">
-														<p ng-repeat="confirmado in evento.Confirmados" class="checkboxConfirmados col s12 m6">																
+														<p ng-repeat="confirmado in evento.Confirmados" ng-if="confirmado.listaNegraEvento != 1" class="checkboxConfirmados col s12 m6">																
 															<label class="nomeExcluirUsuario" ng-attr-for="{{confirmado.ID}}">
 																<a id="btn" href="#" onClick="$(this).css('display','none');" ng-click="adicionarListaNegra(confirmado.ID, confirmado.IDEvento)"><img id="iconListaNegraERemover" src="../rsc/icon/listanegra.png"></a> 
 																<a id="btn" href="#" onClick="$(this).css('display','none');" ng-click="excluirUsuario(confirmado.ID, confirmado.IDEvento)"><img id="iconListaNegraERemover" src="../rsc/icon/remover.png"></a>			
