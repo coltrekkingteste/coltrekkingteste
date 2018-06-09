@@ -407,15 +407,7 @@ function criarEventoDB(req, data, connection, callback) {
 					if(!err) {
 						connection.query('UPDATE `pessoa` SET ListaNegra = 2 WHERE ListaNegra = 1', function(err, rows, fields) {				
 							if(!err) {
-								connection.query('UPDATE `pessoa-evento` SET listaNegraEvento = 2 WHERE ListaNegra = 1', function(err, rows, fields) {				
-									connection.release();
-		
-									if(!err) {
-										callback(true);
-									} else {
-										callback(false);
-									}
-								});
+								callback(true);
 							} else {
 								callback(false);
 							}
