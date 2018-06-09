@@ -403,11 +403,17 @@ function criarEventoDB(req, data, connection, callback) {
 	if(req.session.usuarioLogado.Admin) {
 		connection.query('INSERT INTO evento SET ?', data, function(err, rows, fields) {
 			if(!err) {
-				connection.query('UPDATE `pessoa` SET ListaNegra = 2 WHERE ListaNegra = 1', function(err, rows, fields) {
-					connection.release();
-		
+				connection.query('UPDATE `pessoa` SET ListaNegra = 2 WHERE ListaNegra = 1', function(err, rows, fields) {		
 					if(!err) {
-						callback(true);
+						connection.query('UPDATE `pessoa` SET ListaNegra = 0 WHERE ListaNegra = 2', function(err, rows, fields) {		
+							connection.release();
+		
+							if(!err) {
+								callback(true);
+							} else {
+								callback(false);
+							}
+						});		
 					} else {
 						callback(false);
 					}
