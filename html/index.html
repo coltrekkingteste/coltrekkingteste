@@ -218,10 +218,10 @@
 
 										<!--Linha para cada usuario-->
 										<tbody>
-											<tr ng-repeat="pessoa in `pessoa-evento`">
+											<tr ng-repeat="evento in eventos">
 												<td>{{$index + 1}}º</td>
-												<td>{{pessoa.IDPessoa}}</td>
-												<td>{{pessoa.listaNegraEvento}}</td>
+												<td>{{evento.Nome}}</td>
+												<td>{{evento.Tipo}}</td>
 											</tr>
 										</tbody>
 									</table>
