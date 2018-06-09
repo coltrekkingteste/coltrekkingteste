@@ -205,12 +205,6 @@
 							<div class="card">
 								<div class="card-content">
 
-
-									<!-- Countdown Do Ranking -->
-									<p class="countdownRanking">
-											<!-- O Ranking será zerado em {{ranking.CountdownRanking}} -->
-									</p>
-
 									<!--Tabela-->
 									<table class="striped">
 										<!--Titulos da tabela-->
@@ -224,10 +218,10 @@
 
 										<!--Linha para cada usuario-->
 										<tbody>
-											<tr ng-repeat="pessoa in listanegra">
+											<tr ng-repeat="pessoa in `pessoa-evento`">
 												<td>{{$index + 1}}º</td>
-												<td>{{pessoa.Nome}}</td>
-												<td>{{pessoa.FatorK.toFixed(1)}}</td>
+												<td>{{pessoa.IDPessoa}}</td>
+												<td>{{pessoa.listaNegraEvento}}</td>
 											</tr>
 										</tbody>
 									</table>
