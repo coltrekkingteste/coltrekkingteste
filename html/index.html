@@ -217,7 +217,7 @@
 										</thead>
 
 										<tbody>
-											<tr id="ListaNegraEventos" ng-repeat="evento in eventos" >
+											<tr ng-repeat="evento in eventos" >
 												<td>
 													<p ng-repeat="confirmado in evento.Confirmados" ng-if="confirmado.listaNegraEvento != 0">	
 														{{confirmado.Nome}}
@@ -229,7 +229,7 @@
 													</p>
 												</td>
 												<td>
-													<p ng-repeat="confirmado in evento.Confirmados" ng-if="confirmado.listaNegraEvento != 0">	
+													<p id="ListaNegraEventos" ng-repeat="confirmado in evento.Confirmados" ng-if="confirmado.listaNegraEvento != 0">	
 														{{confirmado.listaNegraEvento}}														
 													</p>
 												</td>
