@@ -3,7 +3,9 @@ $(document).ready(function() {
 	//SideNav
 	$(".button-collapse").sideNav({closeOnClick: true, draggable: false});
 
-	
+	//Colocar o tab indicador
+	$('ul.tabs').tabs();
+
 	//ScrollSpy
 	$('.scrollspy').scrollSpy();
 	
