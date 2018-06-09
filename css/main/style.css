@@ -378,6 +378,11 @@ h3{
   margin-top: -53px !important;
 }
 
+/*Tamanho dos icones lista negra e remover - na hora de cadastrar fator k*/
+#iconListaNegraERemover{
+  width: 20px;
+}
+
 /*Cores dos CountDowns*/
 aCountdownVerde {
   color: #8BC34A !important;
