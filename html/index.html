@@ -217,25 +217,23 @@
 										</thead>
 
 										<tbody>
-											<div ng-repeat="evento in eventos" >
-												<tr >
-													<td>
-														<p ng-repeat="confirmado in evento.Confirmados" ng-if="confirmado.listaNegraEvento != 0">	
-															{{confirmado.Nome}}
-														</p>
-													</td>
-													<td>
-														<p>	
-															{{evento.Nome}}														
-														</p>
-													</td>
-													<td>
-														<p ng-repeat="confirmado in evento.Confirmados" ng-if="confirmado.listaNegraEvento != 0">	
-															{{confirmado.listaNegraEvento}}														
-														</p>
-													</td>
-												</tr>
-											</div>
+											<tr ng-repeat="evento in eventos" >
+												<td>
+													<p ng-repeat="confirmado in evento.Confirmados" ng-if="confirmado.listaNegraEvento != 0">	
+														{{confirmado.Nome}}
+													</p>
+												</td>
+												<td>
+													<p>	
+														{{evento.Nome}}														
+													</p>
+												</td>
+												<td>
+													<p ng-repeat="confirmado in evento.Confirmados" ng-if="confirmado.listaNegraEvento != 0">	
+														{{confirmado.listaNegraEvento}}														
+													</p>
+												</td>
+											</tr>
 										</tbody>
 
 
