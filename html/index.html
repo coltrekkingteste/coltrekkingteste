@@ -205,6 +205,76 @@
 							<div class="card">
 								<div class="card-content">
 
+
+
+
+									<div ng-attr-id="{{'lista-finalizadora' + evento.ID}}" class="modal" id="modal-finalizar">
+											<div class="modal-content">
+												<p class="modal-header">Editar Fator K</p>
+												
+												<form>								
+														<aCountdownVerde>Legenda</aCountdownVerde>
+														<h6><img id="iconListaNegraERemover" src="../rsc/icon/listanegra.png"> Lista Negra (não poderá se inscrever no próximo evento e não ganhará a pontuação (Fator K))</h6>
+														<h6><img id="iconListaNegraERemover" src="../rsc/icon/remover.png"> Remover (apenas não ganhará a pontuação (Fator K))</h6><br>
+														<aCountdownVerde>Lista de participantes</aCountdownVerde>
+													<div class="row">
+														<p ng-repeat="confirmado in evento.Confirmados" ng-if="confirmado.listaNegraEvento == 0" class="checkboxConfirmados col s12 m6">																
+															<label class="nomeExcluirUsuario" ng-attr-for="{{confirmado.ID}}">
+																<a id="btn" href="#" onClick="$(this).css('display','none');" ng-click="adicionarListaNegra(confirmado.ID, confirmado.IDEvento)"><img id="iconListaNegraERemover" src="../rsc/icon/listanegra.png"></a> 
+																<a id="btn" href="#" onClick="$(this).css('display','none');" ng-click="excluirUsuario(confirmado.ID, confirmado.IDEvento)"><img id="iconListaNegraERemover" src="../rsc/icon/remover.png"></a>			
+																{{confirmado.Nome}} 
+															</label>
+														</p>
+													</div>
+													<aCountdownVerde>Cadastrar Prontução</aCountdownVerde>
+													<div class="row">
+														<!-- Kilometragem -->
+														<div class="input-field col s12 m5 l3">
+															<input id="km-finalizar" type="text" name="kilometragem" ng-model="finalizar.Kilometragem">
+															<label for="km-finalizar">Kilometragem</label>
+														</div>
+													
+														<!-- Subida -->
+														<div class="input-field col s12 m5 l3">
+															<input id="subida-finalizar" type="text" step="0.01" name="subida" ng-model="finalizar.subida">
+															<label for="subida-finalizar">Subida (metros)</label>
+														</div>
+
+														<!-- Descida -->
+														<div class="input-field col s12 m5 l3">
+															<input id="descida-finalizar" type="text" step="0.01" name="descida" ng-model="finalizar.descida">
+															<label for="descida-finalizar">Descida (metros)</label>
+														</div>
+													</div>
+													
+													
+												</form>
+											</div>
+											
+											<div class="modal-footer">
+												<!--Botao Cancelar-->
+												<a href="#!" class="modal-action modal-close waves-effect waves-orange btn-flat">Cancelar</a>
+												<!--Botao Submit Finalizar-->
+												<a href="#!" id="btn-finalizar-evento" class="modal-action modal-close waves-effect waves-orange btn-flat" onClick='parent.location="javascript:location.reload()"' ng-click="finalizarEvento(finalizar, evento.ID, evento.fatorKevento)">Aplicar</a>
+												<!-- Pegar pessoas inscritas no evento e jogar na string pessoas -->				
+												<div ng-repeat="confirmado in evento.Confirmados">
+													<input type="text" class="removerIDpessoas" name="pessoas[]" ng-attr-id="{{confirmado.ID}}" ng-attr-value="{{confirmado.ID}}"/>														
+												</div>
+											</div>
+										</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 									<!--Tabela-->
 									<table class="striped">
 										<!--Titulos da tabela-->
