@@ -461,7 +461,7 @@
 			var data = {
 				evento: evento.ID,
 				usuario: $rootScope.usuario.ID,
-				blacklist: $rootScope.usuario.Posicao
+				blacklist: $rootScope.usuario.ListaNegra
 			}
 			console.log(data.usuario);
 			console.log(data.blacklist);
