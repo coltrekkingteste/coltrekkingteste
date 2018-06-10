@@ -538,7 +538,8 @@ function confirmarEventoDB(data, connection, callback) {
 							Colocacao: 0,
 							ListaEspera: 0,
 							DataInscricao: new Date().toUTCString(),
-							DataHoraInscricao: datetime
+							DataHoraInscricao: datetime,
+							listaNegraEvento: data.blacklist
 						};
 						
 						//Adiciona pessoa ao evento
