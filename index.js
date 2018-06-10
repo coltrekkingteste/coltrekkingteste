@@ -556,6 +556,7 @@ function confirmarEventoDB(data, connection, callback) {
 							});
 						}
 						else{
+							Materialize.toast("Erro ao se inscrever no evento!", 3000);
 							callback(false);
 						}
 					} else {
