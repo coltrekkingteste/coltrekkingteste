@@ -36,8 +36,12 @@
 	</head>
 	
 	<body>
+		<div class="loading">
+			<p>loading</p>
+		</div>
 
-		<conteudo style="display: none">
+		<!-- Todo o conteudo do site -->
+		<div id="conteudo" style="display: none">
 			<div ng-controller="LoginController as login">
 				<!--NavBar-->
 				<div class="navbar-fixed">
@@ -703,6 +707,14 @@
 		<script src="../node_modules/materialize-css/dist/js/materialize.min.js"></script>	
 		<!--Adiciona script.js-->
 		<script src="../js/main/script.js"></script>
+
+		<script>
+			setTimeout(function(){ 
+				document.getElementById("loading").remove();
+				document.getElementById("conteudo").style.display = "block";
+			}, 5000);
+		</script>
+
 	</body>
 
 </html>
