@@ -91,8 +91,7 @@
 							<div class="nav-content">
 								<ul class="tabs tabs-transparent tabs-fixed-width" ng-show="$location.path() === '/'"> <!--So aparece na Pagina Principal-->
 									<li class="tab"><a href="#eventos">Eventos</a></li>
-									<li class="tab"><a href="#listanegra">Lista Negra</a></li>
-									<li class="tab"><a href="#news-feed">News Feed</a></li>
+									<li class="tab"><a href="#news-feed">Lista Negra</a></li>
 									<li class="tab"><a href="#ranking">Ranking</a></li>
 								</ul>
 							</div>
@@ -196,63 +195,6 @@
 											</div>
 										</div>
 									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div ng-controller="EventosController">
-						<div id="listanegra">
-							<div class="card">
-								<div class="card-content">
-
-									<!--Tabela-->
-									<table class="striped">
-										<!--Titulos da tabela-->
-										<thead>
-											<tr>
-												<th>USUÁRIO</th>
-												<th>TREKKING QUE O USUÁRIO FALTOU</th>
-												<th>SITUAÇÃO</th>
-											</tr>
-										</thead>
-
-										<tbody ng-repeat="evento in eventos">
-											<tr ng-repeat="confirmado in evento.Confirmados" ng-if="confirmado.listaNegraEvento != 0">
-												<td class="listaNegraUsuario">
-													<p>	
-														{{confirmado.Nome}}
-													</p>
-												</td>
-												<td class="listaNegraUsuario">
-													<p>	
-														{{evento.Nome}}														
-													</p>
-												</td>
-												<td class="listaNegraUsuario">
-													<aCountdownVermelho ng-if="confirmado.listaNegraEvento == 1">
-														Bloqueado no próximo
-													</aCountdownVermelho>
-
-													<aCountdownLaranja ng-if="confirmado.listaNegraEvento == 2">
-														Livre no próximo
-													</aCountdownLaranja>
-
-													<aCountdownVerde ng-if="confirmado.listaNegraEvento == 3">
-														Livre
-													</aCountdownVerde>
-
-												</td>
-											</tr>
-										</tbody>
-									</table>
-
-									<script>
-									x = document.getElementsByClassName("listaNegraUsuario").length;
-									for (i=0;i<=x;i++){
-										document.getElementsByClassName("listaNegraUsuario")[i].style.backgroundColor = "#FFFFFF";
-									}
-									</script>
-
 								</div>
 							</div>
 						</div>
