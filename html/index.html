@@ -313,22 +313,19 @@
 
 										<!--Fixacoes-->
 										<div ng-controller="PostsController">
-											<div class="container col hide-on-med-and-down l4 right">
-												<!-- Posts fixados -->											
-												<div class="card" ng-repeat="post in postagemFixada | filter: {Fixado: 1}">
-													<div class="card-content">
-														<a href="#" onclick="return false;" ng-click="excluirPostagem(post.ID)">
-															<i ng-if="usuario.Admin" class="material-icons delete-post-fixado">delete</i>
-														</a>
-														<p class="data-post data-post-fixado">{{post.Data}}</p>
-														
-														<!-- Corpo da postagem -->
-														<p ng-bind-html="post.Texto"></p>
-													</div>
+											<!-- Posts fixados -->											
+											<div class="card" ng-repeat="post in postagemFixada | filter: {Fixado: 1}">
+												<div class="card-content">
+													<a href="#" onclick="return false;" ng-click="excluirPostagem(post.ID)">
+														<i ng-if="usuario.Admin" class="material-icons delete-post-fixado">delete</i>
+													</a>
+													<p class="data-post data-post-fixado">{{post.Data}}</p>
+													
+													<!-- Corpo da postagem -->
+													<p ng-bind-html="post.Texto"></p>
 												</div>
 											</div>
 										</div>
-
 
 									</div>
 									<!--Cria os cards de evento-->
@@ -538,7 +535,7 @@
 
 
 									<!--Fixacoes-->
-									<div id="postFixaxoes">
+									<div id="postFixaxoes" style="display: none">
 										<div ng-controller="PostsController">
 											<div class="container col hide-on-med-and-down l4 right">
 												<!-- Posts fixados -->											
@@ -566,9 +563,7 @@
 													contarNumeroEventosDisponiveis++;
 													if(contarNumeroEventosDisponiveis == 2){
 														document.getElementById("mensagemNaoHaEventosDisponiveis").remove();
-													}
-													else {
-														document.getElementById("postFixaxoes").remove();
+														document.getElementById("postFixaxoes").style.display = "block";
 													}
 												</script>
 											</div>
