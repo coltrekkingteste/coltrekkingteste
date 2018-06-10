@@ -703,5 +703,13 @@
 		<!--Adiciona script.js-->
 		<script src="../js/main/script.js"></script>
 	</body>
+	<script>
+		$(document).ready(function(){
+			//Esconde preloader
+			$(window).load(function(){
+				$('#preloader').fadeOut(1500);//1500 é a duração do efeito (1.5 seg)
+			});
+		});
+	</script>
 
 </html>
