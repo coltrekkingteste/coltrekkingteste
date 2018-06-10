@@ -607,6 +607,25 @@
 
 
 
+		//Remover usuario da lista negra
+		$scope.removerListaNegra = function(id, idevento) {
+			var dataPost = {
+				ID: id,
+				IDEvento: idevento
+			}
+
+			//Chama POST Remover na lista negra
+			httpService.post('/remover-lista-negra', dataPost, function(answer) {
+				//Emite alerta sobre o status da operacao
+				if(answer) {
+					Materialize.toast("Usuario removido da lista negra com sucesso!", 2000);					
+				} else {
+					Materialize.toast("Erro ao remover usuario da lista negra", 3000);
+				}
+			});
+		}
+
+
 		
 		
 		//Excluir Evento

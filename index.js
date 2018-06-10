@@ -259,6 +259,19 @@ app.post("/adicionar-lista-negra", function(req, res) {
 	}
 });
 
+//*****Remover usuario da lista negra*****//
+app.post("/remover-lista-negra", function(req, res) {
+	if(!req.session.usuarioLogado.ID) {
+		res.send(false);
+	} else {
+		handleDatabase(req, res, function(req, res, connection) {
+			removerListaNegraDB(req, req.body, connection, function(status) {
+				res.send(status);
+			});
+		});
+	}
+});
+
 
 //*****Excluir Evento*****//
 app.post("/excluir-evento", function(req, res) {
@@ -683,6 +696,31 @@ function adicionarListaNegraDB(req, post, connection, callback) {
 	}
 }
 
+
+/**
+	Remover usuario da lista negra
+**/
+function removerListaNegraDB(req, post, connection, callback) {	
+	if(req.session.usuarioLogado.Admin) {
+		connection.query('UPDATE `pessoa-evento` SET listaNegraEvento = 0 WHERE IDEvento = ? AND IDPessoa = ?', [post.IDEvento, post.ID], function(err, rows, fields) {
+			if(!err) {
+				connection.query('UPDATE `pessoa` SET ListaNegra = 0 WHERE ID = ?', post.ID, function(err, rows, fields) {
+					connection.release();
+		
+					if(!err) {
+						callback(true);
+					} else {
+						callback(false);
+					}
+				});			
+			} else {
+				callback(false);
+			}
+		});
+	} else {
+		callback(false);
+	}
+}
 
 
 
