@@ -461,7 +461,7 @@
 			var data = {
 				evento: evento.ID,
 				usuario: $rootScope.usuario.ID,
-				blacklist: $rootScope.usuario.ListaNegra
+				blacklist: $rootScope.usuario
 			}
 			console.log(blacklist);
 			//Chama POST Confirmar Evento
