@@ -33,6 +33,14 @@
 
 		<!--Importa CSS-->
 		<link rel="stylesheet" type="text/css" href="../css/main/style.css">
+
+		<script>
+			setTimeout(function(){ 
+				document.getElementById("loading").remove();
+				document.getElementById("conteudo").style.display = "block";
+			}, 3000);
+		</script>
+
 	</head>
 	
 	<body>
@@ -707,14 +715,6 @@
 		<script src="../node_modules/materialize-css/dist/js/materialize.min.js"></script>	
 		<!--Adiciona script.js-->
 		<script src="../js/main/script.js"></script>
-
-		<script>
-			setTimeout(function(){ 
-				document.getElementById("loading").remove();
-				document.getElementById("conteudo").style.display = "block";
-			}, 3000);
-		</script>
-
 	</body>
 
 </html>
