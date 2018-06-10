@@ -33,6 +33,18 @@
 
 		<!--Importa CSS-->
 		<link rel="stylesheet" type="text/css" href="../css/main/style.css">
+
+		<!-- Tela de login -->
+		<script>
+			$(window).load(function() {
+				var i = setInterval(function () {
+					clearInterval(i);
+					document.getElementById("loading").style.display = "none";
+					document.getElementById("conteudo").style.display = "inline";
+				}, 4000);
+			})
+		</script>
+
 	</head>
 	
 	<body>
@@ -707,16 +719,7 @@
 			<script src="../node_modules/materialize-css/dist/js/materialize.min.js"></script>	
 			<!--Adiciona script.js-->
 			<script src="../js/main/script.js"></script>
-		</div>
-		<script>
-			$(window).load(function() {
-				var i = setInterval(function () {
-					clearInterval(i);
-					document.getElementById("loading").style.display = "none";
-					document.getElementById("conteudo").style.display = "inline";
-				}, 4000);
-			})
-		</script>
+		</div>	
 	</body>
 
 </html>
