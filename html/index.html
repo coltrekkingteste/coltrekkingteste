@@ -181,7 +181,9 @@
 														Livre
 													</aCountdownVerde>
 												</td>
-												<a ng-if="usuario.Admin" id="btn" href="#" onClick="$(this).css('display','none');" ng-click="excluirUsuario(confirmado.ID, confirmado.IDEvento)"><img id="iconListaNegraERemover" src="../rsc/icon/remover.png"></a>
+												<td class="listaNegraUsuario">
+													<a ng-if="usuario.Admin" id="btn" href="#" onClick="$(this).css('display','none');" ng-click="excluirUsuario(confirmado.ID, confirmado.IDEvento)"><img id="iconListaNegraERemover" src="../rsc/icon/remover.png"></a>
+												</td>
 											</tr>
 										</tbody>
 									</table>
