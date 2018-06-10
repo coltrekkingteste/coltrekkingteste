@@ -24,12 +24,13 @@ body {
 
 
 #loadingAlinhar{
-  width:30vw;
-		position:absolute;
-		top:50%;
-		left:50%;
-		margin-top:-10vw;
-		margin-left:-15vw;
+  width:128px;
+  height: 128px;
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-top:-64px;
+  margin-left:-64px;
 }
 
 
