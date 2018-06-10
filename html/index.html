@@ -518,9 +518,18 @@
 
 								<!--Eventos Disponiveis-->
 								<div id="exibirEventosDisponiveis">
+									<!-- Layout padrao, para quando nao ha eventos disponiveis. -->
+									<div id="mensagemNaoHaEventosDisponiveis">
+										<h1>Não há eventos disponíveis no momento!</h1>
+										<img class="imagemNaoHaEventosDisponivel" src="../rsc/icon/naoHaEventosDisponiveis.png"/>
+										<h2>Para ver o calendário clique no </h2>
+										<h3>(canto superior direito)</h3>	
+									</div>
 
-									<!-- Posts fixados -->
+
+									<!--Fixacoes-->
 									<div class="container col hide-on-med-and-down l4 right">
+										<!-- Posts fixados -->
 										<p class="fixadas-titulo">Publicações Fixadas</p>
 										
 										<div class="card" ng-repeat="post in postagemFixada | filter: {Fixado: 1}">
@@ -534,26 +543,6 @@
 												<p ng-bind-html="post.Texto"></p>
 											</div>
 										</div>
-									</div>
-
-									<!-- Layout padrao, para quando nao ha eventos disponiveis. -->
-									<div id="mensagemNaoHaEventosDisponiveis">
-										<h1>Não há eventos disponíveis no momento!</h1>
-										<img class="imagemNaoHaEventosDisponivel" src="../rsc/icon/naoHaEventosDisponiveis.png"/>
-										<h2>Para ver o calendário clique no </h2>
-										<h3>(canto superior direito)</h3>	
-									</div>
-
-
-									<!--Fixacoes-->
-									<div class="container col hide-on-med-and-down l4 right">
-									
-										<!-- Scroll Spy -->
-										<ul class="section table-of-contents">
-											<li ng-repeat="evento in eventos" ng-if="evento.Finalizado == 0">
-												<a ng-attr-href="{{'#' + evento.ID}}">{{evento.Nome}}</a>
-											</li>
-										</ul>
 									</div>
 									
 									<!--Cria os cards de evento-->
