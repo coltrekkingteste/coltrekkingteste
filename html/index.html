@@ -263,34 +263,33 @@
 						var contarNumeroEventosDisponiveis=0;
 					</script>
 
+					<script>
+						function displayEventosDisponiveis(exibirEventosDisponiveis, exibirEventosFinalizados) {
+							document.getElementById(exibirEventosDisponiveis).style.display = 'block';
+							document.getElementById(exibirEventosFinalizados).style.display = 'none';
+						}
+						function displayEventosFinalizados(exibirEventosFinalizados, exibirEventosDisponiveis) {
+							document.getElementById(exibirEventosFinalizados).style.display = 'block';
+							document.getElementById(exibirEventosDisponiveis).style.display = 'none';
+						}
+					</script>
+
+					<div class="row">
+						<div class="col m1 l3"></div>
+						<div class="col s12 m10 l6">
+							<ul class="tabsEventos tabs tabs-green">
+								<li class="tabsEventos tab col s6"><a class="active" onclick="displayEventosDisponiveis('exibirEventosDisponiveis', 'exibirEventosFinalizados');" href="#">Disponíveis</a></li>
+								<li class="tabsEventos tab col s6"><a onclick="displayEventosFinalizados('exibirEventosFinalizados', 'exibirEventosDisponiveis');" href="#">Finalizados</a></li>
+							</ul>
+						</div>
+						<div class="col m1 l3"></div>								
+					</div>
+
+
 
 					<!--Eventos-->
 					<div ng-controller="EventosController">
 						<div id="eventos">
-
-							<script>
-								function displayEventosDisponiveis(exibirEventosDisponiveis, exibirEventosFinalizados) {
-									document.getElementById(exibirEventosDisponiveis).style.display = 'block';
-									document.getElementById(exibirEventosFinalizados).style.display = 'none';
-								}
-								function displayEventosFinalizados(exibirEventosFinalizados, exibirEventosDisponiveis) {
-									document.getElementById(exibirEventosFinalizados).style.display = 'block';
-									document.getElementById(exibirEventosDisponiveis).style.display = 'none';
-								}
-							</script>
-	
-							<div class="row">
-								<div class="col m1 l3"></div>
-								<div class="col s12 m10 l6">
-									<ul class="tabsEventos tabs tabs-green">
-										<li class="tabsEventos tab col s6"><a class="active" onclick="displayEventosDisponiveis('exibirEventosDisponiveis', 'exibirEventosFinalizados');" href="#">Disponíveis</a></li>
-										<li class="tabsEventos tab col s6"><a onclick="displayEventosFinalizados('exibirEventosFinalizados', 'exibirEventosDisponiveis');" href="#">Finalizados</a></li>
-									</ul>
-								</div>
-								<div class="col m1 l3"></div>								
-							</div>
-
-
 							<!--Eventos Disponiveis-->
 							<div id="exibirEventosDisponiveis">
 								<div class="row modulo-wrapper">
@@ -543,7 +542,7 @@
 
 
 							<!--Eventos Finalizados-->
-							<div id="exibirEventosFinalizados">
+							<div id="exibirEventosFinalizados" style="display: none;">
 								<div class="row modulo-wrapper">
 									<!--Fixacoes-->
 									<div class="container col hide-on-med-and-down l4 right">
