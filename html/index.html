@@ -413,35 +413,15 @@
 									
 										</div>
 										
-										<!--Lista de Inscritos-->
-										<div ng-attr-id="{{'lista-inscritos' + evento.ID}}">
-												<p class="modal-header">{{evento.Nome}}</p>
-												
-												<!--Tabela-->
-												<table>
-													<!--Titulos da tabela-->
-													<thead>
-														<tr>
-															<th>Posição</th>
-															<th>Nome</th>
-															<th class="hide-on-med-and-down">Data da Inscrição</th>
-														</tr>
-													</thead>
+										
 
-													<!--Linha para cada usuario-->
-													<tbody>
-														<tr ng-repeat="pessoa in evento.Confirmados" ng-class="{espera: $index >= evento.NumeroMax}">
-															<td>{{$index + 1}}º</td>
-															<td>{{pessoa.Nome}}</td>
-															<td class="hide-on-med-and-down">{{pessoa.DataInscricao}}</td>
-														</tr>
-													</tbody>
-												</table>
-											
-											<div class="modal-footer">
-												<button type="button" class="modal-action modal-close waves-effect waves-orange btn-flat">Fechar</button>
-											</div>
-										</div>									
+										
+
+
+
+
+
+
 										
 										<!-- Lista Finalizadora-->
 										<div ng-attr-id="{{'lista-finalizadora' + evento.ID}}" class="modal" id="modal-finalizar">
