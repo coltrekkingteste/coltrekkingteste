@@ -33,28 +33,11 @@
 
 		<!--Importa CSS-->
 		<link rel="stylesheet" type="text/css" href="../css/main/style.css">
-
-		<!-- Tela de login -->
-		<script>
-			$(window).load(function() {
-				var i = setInterval(function () {
-					clearInterval(i);
-					document.getElementById("loading").style.display = "none";
-					document.getElementById("conteudo").style.display = "inline";
-				}, 4000);
-			})
-		</script>
-
 	</head>
 	
 	<body>
-		<!-- Tela de carregamento -->
-		<div id="loading" style="display: block">
-			<img src="http://media.giphy.com/media/FwviSlrsfa4aA/giphy.gif" style="width:150px;height:150px;" />
-		</div>
-
-		<!-- Tela de todo o conteudo do site -->
-		<div id="conteudo" style="display: none">
+		<div id="preloader"><h1>CARREGANDO</h1></div>
+		<div id="conteudo">
 			<div ng-controller="LoginController as login">
 				<!--NavBar-->
 				<div class="navbar-fixed">
@@ -714,12 +697,11 @@
 					<div ng-view></div>
 				</div>
 			</div>
-
-			<!--Adiciona materialize.js-->
-			<script src="../node_modules/materialize-css/dist/js/materialize.min.js"></script>	
-			<!--Adiciona script.js-->
-			<script src="../js/main/script.js"></script>
-		</div>	
+		</div>
+		<!--Adiciona materialize.js-->
+		<script src="../node_modules/materialize-css/dist/js/materialize.min.js"></script>	
+		<!--Adiciona script.js-->
+		<script src="../js/main/script.js"></script>
 	</body>
 
 </html>
