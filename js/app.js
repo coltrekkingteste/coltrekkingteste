@@ -460,9 +460,11 @@
 			
 			var data = {
 				evento: evento.ID,
-				usuario: $rootScope.usuario.ID
+				usuario: $rootScope.usuario.ID,
+				blacklist: $rootScope.usuario.ListaNegra
 			}
-			console.log(usuario);
+			console.log(data.usuario);
+			console.log(data.blacklist);
 			//Chama POST Confirmar Evento
 			httpService.post('/confirmar-evento', data, function(answer) {
 				//Reabilita o botao de se inscrever
