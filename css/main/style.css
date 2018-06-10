@@ -215,11 +215,6 @@ nav .tabs {
 
 
 /*****CARD POSTS EVENTOS*****/
-#eventos .fixadas-titulo {
-  font-size: 24px;
-  font-weight: 300;
-  margin-top: 0px; }
-
 #eventos .data-post {
   color: rgba(0, 0, 0, 0.6);
   font-size: 11px;

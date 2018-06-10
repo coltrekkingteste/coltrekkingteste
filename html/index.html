@@ -145,9 +145,7 @@
 						<div id="news-feed">
 							<div class="row modulo-wrapper">							
 								<!-- Posts fixados -->
-								<div class="container col hide-on-med-and-down l4 right">
-									<p class="fixadas-titulo">Publicações Fixadas</p>
-									
+								<div class="container col hide-on-med-and-down l4 right">									
 									<div class="card" ng-repeat="post in postagemFixada | filter: {Fixado: 1}">
 										<div class="card-content">
 											<a href="#" onclick="return false;" ng-click="excluirPostagem(post.ID)">
