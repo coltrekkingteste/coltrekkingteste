@@ -402,6 +402,11 @@ aCountdownLaranja {
   font-weight: bold;
   font-size: 20px; }
 
+aCountdownVermelho {
+  color: red !important;
+  font-weight: bold;
+  font-size: 20px; }
+
   aPontuacao {
   color: #000000 !important;
  }

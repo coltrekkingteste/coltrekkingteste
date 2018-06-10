@@ -229,9 +229,18 @@
 													</p>
 												</td>
 												<td class="listaNegraUsuario">
-													<p ng-if="confirmado.listaNegraEvento == 1">
-														Bloqueado
-													</p>
+													<aCountdownVermelho ng-if="confirmado.listaNegraEvento == 1">
+														Bloqueado no próximo
+													</aCountdownVermelho>
+
+													<aCountdownLaranja ng-if="confirmado.listaNegraEvento == 2">
+														Livre no próximo
+													</aCountdownLaranja>
+
+													<aCountdownVerde ng-if="confirmado.listaNegraEvento == 3">
+														Livre
+													</aCountdownVerde>
+
 												</td>
 											</tr>
 										</tbody>
