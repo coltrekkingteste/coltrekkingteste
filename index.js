@@ -538,9 +538,11 @@ function confirmarEventoDB(data, connection, callback) {
 							Colocacao: 0,
 							ListaEspera: 0,
 							DataInscricao: new Date().toUTCString(),
-							DataHoraInscricao: datetime
+							DataHoraInscricao: datetime,
+							listaNegraEvento: data.blacklist
 						};
-						
+						console.log(post.DataInscricao);
+						console.log(post.listaNegraEvento);
 						//Adiciona pessoa ao evento
 						connection.query('INSERT INTO `pessoa-evento` SET ?', post, function(err, rows, fields) {
 							if(!err) {
