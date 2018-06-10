@@ -311,6 +311,31 @@
 											</li>
 										</ul>
 									</div>
+
+
+
+									<!--Fixacoes-->
+									<div id="postFixaxoes">
+										<div ng-controller="PostsController">
+											<div class="container col hide-on-med-and-down l4 right">
+												<!-- Posts fixados -->											
+												<div class="card" ng-repeat="post in postagemFixada | filter: {Fixado: 1}">
+													<div class="card-content">
+														<a href="#" onclick="return false;" ng-click="excluirPostagem(post.ID)">
+															<i ng-if="usuario.Admin" class="material-icons delete-post-fixado">delete</i>
+														</a>
+														<p class="data-post data-post-fixado">{{post.Data}}</p>
+														
+														<!-- Corpo da postagem -->
+														<p ng-bind-html="post.Texto"></p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+
+
 									
 									<!--Cria os cards de evento-->
 									<div class="container col s12 l7" ng-repeat="evento in eventos">
