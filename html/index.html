@@ -310,12 +310,8 @@
 												<a ng-attr-href="{{'#' + evento.ID}}">{{evento.Nome}}</a>
 											</li>
 										</ul>
-									</div>
 
-
-
-									<!--Fixacoes-->
-									<div id="postFixaxoes">
+										<!--Fixacoes-->
 										<div ng-controller="PostsController">
 											<div class="container col hide-on-med-and-down l4 right">
 												<!-- Posts fixados -->											
@@ -332,11 +328,9 @@
 												</div>
 											</div>
 										</div>
+
+
 									</div>
-
-
-
-									
 									<!--Cria os cards de evento-->
 									<div class="container col s12 l7" ng-repeat="evento in eventos">
 										<div class="card card-evento section scrollspy" ng-attr-id="{{evento.ID}}" ng-if="evento.Finalizado == 1">
@@ -471,15 +465,6 @@
 										</div>		
 										
 										
-
-										
-
-
-
-
-
-
-										
 										<!-- Lista Finalizadora-->
 										<div ng-attr-id="{{'lista-finalizadora' + evento.ID}}" class="modal" id="modal-finalizar">
 											<div class="modal-content">
@@ -581,6 +566,8 @@
 													contarNumeroEventosDisponiveis++;
 													if(contarNumeroEventosDisponiveis == 2){
 														document.getElementById("mensagemNaoHaEventosDisponiveis").remove();
+													}
+													else {
 														document.getElementById("postFixaxoes").remove();
 													}
 												</script>
