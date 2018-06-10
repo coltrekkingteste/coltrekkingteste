@@ -556,7 +556,6 @@ function confirmarEventoDB(data, connection, callback) {
 							});
 						}
 						else{
-							alert("Você está na lista negra");
 							callback(false);
 						}
 					} else {

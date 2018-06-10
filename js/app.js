@@ -477,7 +477,7 @@
 					$scope.postConfirmado(evento);
 					$scope.confirmadosPorMim();
 				} else {
-					Materialize.toast("Erro ao se inscrever no evento!", 3000);
+					Materialize.toast("Erro ao se inscrever no evento! Verifique se você está na lista negra.", 3000);
 				}
 			});
 		}
