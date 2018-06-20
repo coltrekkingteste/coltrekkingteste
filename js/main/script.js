@@ -1,3 +1,14 @@
+/**********Tela de Carregamento**********/
+$(document).ready(function () {
+	// Depois que carregar, setar mais 3.4 segundos, para garantir o carregamento
+	setTimeout(function(){ 
+		document.getElementById("loading").remove();
+		document.body.style.backgroundColor = "#FAFAFA";
+		document.getElementById("conteudo").style.display = "block";
+	}, 3400);
+});
+
+
 /**********Materialize**********/
 $(document).ready(function() {
 	//SideNav
@@ -15,6 +26,14 @@ function contarNumeroDeEventos(){
 	if(contarNumeroEventosDisponiveis == 2){
 		document.getElementById("mensagemNaoHaEventosDisponiveis").remove();
 		document.getElementById("postFixaxoes").style.display = "block";
+	}
+}
+
+/**********Setar cor branco na lista negra**********/
+function setarCorListaNegra() {
+	x = document.getElementsByClassName("listaNegraUsuario").length;
+		for (i=0;i<=x;i++){
+			document.getElementsByClassName("listaNegraUsuario")[i].style.backgroundColor = "#FFFFFF";
 	}
 }
 
