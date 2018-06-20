@@ -709,10 +709,17 @@
 		<script src="../js/main/script.js"></script>
 
 		<script>
-			setTimeout(function(){ 
-				document.getElementById("loading").remove();
-				document.getElementById("conteudo").style.display = "block";
-			}, 3100);
+			// Tela de carregamento
+			$(document).ready(function () {
+				$(window).load(function () {
+					// Depois que carregar, setar mais 2.5 segundos, para garantir o carregamento
+					setTimeout(function(){ 
+						document.getElementById("loading").remove();
+						document.body.style.backgroundColor = "#FAFAFA";
+						document.getElementById("conteudo").style.display = "block";
+					}, 2500);
+				});
+			});
 		</script>
 
 	</body>
