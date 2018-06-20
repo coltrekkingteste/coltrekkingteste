@@ -28,15 +28,6 @@ function contarNumeroDeEventos(){
 		document.getElementById("postFixaxoes").style.display = "block";
 	}
 }
-
-/**********Setar cor branco na lista negra**********/
-function setarCorListaNegra() {
-	x = document.getElementsByClassName("listaNegraUsuario").length;
-		for (i=0;i<=x;i++){
-			document.getElementsByClassName("listaNegraUsuario")[i].style.backgroundColor = "#FFFFFF";
-	}
-}
-
 /**********FORMULARIO**********/
 //Verifica o tipo do evento inserido
 function verificaTipo() {
