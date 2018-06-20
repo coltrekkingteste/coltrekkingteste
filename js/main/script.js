@@ -8,6 +8,15 @@ $(document).ready(function() {
 	
 });
 
+/**********Mensagem Nao ha eventos disponiveis**********/
+var contarNumeroEventosDisponiveis=0;
+function contarNumeroDeEventos(){
+	contarNumeroEventosDisponiveis++;
+	if(contarNumeroEventosDisponiveis == 2){
+		document.getElementById("mensagemNaoHaEventosDisponiveis").remove();
+		document.getElementById("postFixaxoes").style.display = "block";
+	}
+}
 
 /**********FORMULARIO**********/
 //Verifica o tipo do evento inserido
