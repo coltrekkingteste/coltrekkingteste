@@ -200,11 +200,33 @@
 				//MODO EDICAO
 				//Verifica se esta no modo de edicao
 				if($scope.modoEdicao) {					
+					//Edita os valores dos elementos
+					$("#titulo").text("Editar \"" + $scope.eventoAttr.nome + "\"");
+					$("#nome").val($scope.eventoAttr.nome);
+					$("#tipo").val($scope.eventoAttr.tipo);
 					
+					if($scope.eventoAttr.tipoTrekking != "null") {
+						$("#tipoTrekking").val($scope.eventoAttr.tipoTrekking);
+						$("#tipoTrekking").prop('disabled', false);
+					}
+					
+					if($scope.eventoAttr.dificuldade != "null") {
+						$("#dificuldade").val($scope.eventoAttr.dificuldade);
+						$("#dificuldade").prop('disabled', false);
+					}
+					
+					if($scope.eventoAttr.tipo == "3") {
+						$("#dataFim").attr("disabled", false);
+					}
+
+					$("#dataInicio").val($scope.eventoAttr.dataInicio);
+					$("#dataFim").val($scope.eventoAttr.dataFim);
+					$("#numeroMax").val($scope.eventoAttr.numeroMax);
+					$("#dataInscricao").val($scope.eventoAttr.dataDia);
+					$("#horarioInscricao").val($scope.eventoAttr.dataHora);
+					$("#local").val($scope.eventoAttr.local);
 										
-					//Reinicia os elementos Materialize
-					Materialize.updateTextFields();
-					$('select').material_select();
+					
 				}
 			});
 		});
