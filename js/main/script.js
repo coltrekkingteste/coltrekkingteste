@@ -1,14 +1,3 @@
-/**********Tela de Carregamento**********/
-$(document).ready(function () {
-	// Depois que carregar, setar mais 3.4 segundos, para garantir o carregamento
-	setTimeout(function(){ 
-		document.getElementById("loading").remove();
-		document.body.style.backgroundColor = "#FAFAFA";
-		document.getElementById("conteudo").style.display = "block";
-	}, 3400);
-});
-
-
 /**********Materialize**********/
 $(document).ready(function() {
 	//SideNav
@@ -19,15 +8,6 @@ $(document).ready(function() {
 	
 });
 
-/**********Mensagem Nao ha eventos disponiveis**********/
-var contarNumeroEventosDisponiveis=0;
-function contarNumeroDeEventos(){
-	contarNumeroEventosDisponiveis++;
-	if(contarNumeroEventosDisponiveis == 2){
-		document.getElementById("mensagemNaoHaEventosDisponiveis").remove();
-		document.getElementById("postFixaxoes").style.display = "block";
-	}
-}
 /**********FORMULARIO**********/
 //Verifica o tipo do evento inserido
 function verificaTipo() {
