@@ -226,7 +226,9 @@
 					$("#horarioInscricao").val($scope.eventoAttr.dataHora);
 					$("#local").val($scope.eventoAttr.local);
 										
-					
+					//Reinicia os elementos Materialize
+					Materialize.updateTextFields();
+					$('select').material_select();
 				}
 			});
 		});
