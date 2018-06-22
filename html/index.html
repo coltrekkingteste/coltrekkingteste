@@ -631,7 +631,15 @@
 														<i class="tiny material-icons">add_circle</i>
 														<span class="topico-info"> Nº de Inscritos:</span> {{evento.Confirmados.length}}/{{evento.NumeroMax}}
 													</p>
-													<div class="gerarPdfListaIncritos" style="display: none">
+
+													<style>
+														.gerarPdfListaIncritos{
+															visibility:hidden;
+															height:0px;
+														}
+													</style>
+
+													<div class="gerarPdfListaIncritos">
 														<div class="customers">
 															<table>
 																
