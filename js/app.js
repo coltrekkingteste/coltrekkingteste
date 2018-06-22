@@ -593,7 +593,7 @@
 			// source can be HTML-formatted string, or a reference
 			// to an actual DOM element from which the text will be scraped.
 			console.log("Id do evento: " + idDoEventoParaGerarTabela);
-			source = $('.gerarPdfListaIncritos')[idDoEventoParaGerarTabela];
+			source = $('#idDoEventoParaGerarTabela')[0];
 
 			// we support special element handlers. Register them with jQuery-style 
 			// ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
