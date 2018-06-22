@@ -353,7 +353,30 @@
 													</p>
 
 
-													
+													<div class="gerarPdfListaIncritos">
+														<table>
+															
+															<thead>
+																<tr>
+																	<th>Posição</th>
+																	<th>Nome</th>
+																	<th>Assinatura</th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr ng-repeat="pessoa in evento.Confirmados">
+																	<td>{{$index + 1}}º</td>
+																	<td>{{pessoa.Nome}}</td>
+																	<td></td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+
+													<p>
+														<i class="tiny material-icons">label_outline</i>
+														<button onclick="javascript:demoFromHTML();">PDF</button>
+													</p>
 
 
 												</div>
@@ -498,7 +521,7 @@
 												var pdf = new jsPDF('p', 'pt', 'letter');
 												// source can be HTML-formatted string, or a reference
 												// to an actual DOM element from which the text will be scraped.
-												source = $('.customers')[0];
+												source = $('.gerarPdfListaIncritos')[0];
 					
 												// we support special element handlers. Register them with jQuery-style 
 												// ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
