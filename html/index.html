@@ -494,7 +494,7 @@
 												var pdf = new jsPDF('p', 'pt', 'letter');
 												// source can be HTML-formatted string, or a reference
 												// to an actual DOM element from which the text will be scraped.
-												source = $('.tabelaDeTeste')[0];
+												source = $('.customers')[0];
 					
 												// we support special element handlers. Register them with jQuery-style 
 												// ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
@@ -673,25 +673,45 @@
 														</tbody>
 													</table>
 
-													<table class="tabelaDeTeste">
-															<!--Titulos da tabela-->
-															<thead>
-																<tr>
-																	<th>Posição</th>
-																	<th>Nome</th>
-																	<th>Data da Inscrição</th>
-																</tr>
-															</thead>
-	
-															<!--Linha para cada usuario-->
-															<tbody>
-																<tr ng-repeat="pessoa in evento.Confirmados" ng-class="{espera: $index >= evento.NumeroMax}">
-																	<td>{{$index + 1}}º</td>
-																	<td>{{pessoa.Nome}}</td>
-																	<td>{{pessoa.DataInscricao}}</td>
-																</tr>
-															</tbody>
-													</table>
+													<div class="customers">
+															<table>
+																
+																<thead>
+																	<tr>
+																		<th>Country1</th>
+																		<th>Population</th>
+																		<th>Date</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr>
+																		<td>Chinna</td>
+																		<td>1,363,480,000</td>
+																		<td>March 24, 2014</td>
+																	</tr>
+																	<tr>
+																		<td>India</td>
+																		<td>1,241,900,000</td>
+																		<td>March 24, 2014</td>
+																	</tr>
+																	<tr>
+																		<td>United States</td>
+																		<td>317,746,000</td>
+																		<td>March 24, 2014</td>
+																	</tr>
+																	<tr>
+																		<td>Indonesia</td>
+																		<td>249,866,000</td>
+																		<td>July 1, 2013</td>
+																	</tr>
+																	<tr>
+																		<td>Brazil</td>
+																		<td>201,032,714</td>
+																		<td>July 1, 2013</td>
+																	</tr>
+																</tbody>
+															</table>
+														</div>
 
 
 												</div>
