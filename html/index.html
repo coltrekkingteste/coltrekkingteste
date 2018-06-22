@@ -494,7 +494,7 @@
 										<script>contarNumeroEventosDisponiveis=0;</script> 
 
 										<script type="text/javascript">
-											function demoFromHTML(idDoEventoParaGerarTabela) {
+											function gerarPDF(idDoEventoParaGerarTabela) {
 												var pdf = new jsPDF('p', 'pt', 'letter');
 												// source can be HTML-formatted string, or a reference
 												// to an actual DOM element from which the text will be scraped.
@@ -659,7 +659,7 @@
 
 													<p>
 														<i class="tiny material-icons">label_outline</i>
-														<a onclick="javascript:demoFromHTML(5);">PDF</a>
+														<a onclick="gerarPDF(5);">PDF</a>
 													</p>
 												</div>
 												
