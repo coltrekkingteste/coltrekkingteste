@@ -444,6 +444,11 @@ aCountdownVermelho {
   color: #000000 !important;
  }
 
+ /* Deixar a tabela que gera pdf invisivel */
+ .gerarPdfListaIncritos{
+  visibility:hidden;
+  height:0px;
+}
 
 /*CHECKBOX INVISIVEL*/
 .regular-checkbox {

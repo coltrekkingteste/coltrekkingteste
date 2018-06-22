@@ -352,6 +352,33 @@
 														<span class="topico-info"> Nº de Inscritos:</span> {{evento.Confirmados.length}}/{{evento.NumeroMax}}
 													</p>
 
+
+													<div class="gerarPdfListaIncritos">
+														<table>
+															
+															<thead>
+																<tr>
+																	<th>Posição</th>
+																	<th>Nome</th>
+																	<th>Assinatura</th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr ng-repeat="pessoa in evento.Confirmados">
+																	<td>{{$index + 1}}º</td>
+																	<td>{{pessoa.Nome}}</td>
+																	<td></td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+
+													<p>
+														<i class="tiny material-icons">label_outline</i>
+														<button onclick="javascript:demoFromHTML();">PDF</button>
+													</p>
+
+
 												</div>
 												
 												<!--Card Action LISTA DE INSCRITOS-->
@@ -632,33 +659,24 @@
 														<span class="topico-info"> Nº de Inscritos:</span> {{evento.Confirmados.length}}/{{evento.NumeroMax}}
 													</p>
 
-													<style>
-														.gerarPdfListaIncritos{
-															visibility:hidden;
-															height:0px;
-														}
-													</style>
-
 													<div class="gerarPdfListaIncritos">
-														<div class="customers">
-															<table>
-																
-																<thead>
-																	<tr>
-																		<th>Posição</th>
-																		<th>Nome</th>
-																		<th>Assinatura</th>
-																	</tr>
-																</thead>
-																<tbody>
-																	<tr ng-repeat="pessoa in evento.Confirmados">
-																		<td>{{$index + 1}}º</td>
-																		<td>{{pessoa.Nome}}</td>
-																		<td></td>
-																	</tr>
-																</tbody>
-															</table>
-														</div>
+														<table>
+															
+															<thead>
+																<tr>
+																	<th>Posição</th>
+																	<th>Nome</th>
+																	<th>Assinatura</th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr ng-repeat="pessoa in evento.Confirmados">
+																	<td>{{$index + 1}}º</td>
+																	<td>{{pessoa.Nome}}</td>
+																	<td></td>
+																</tr>
+															</tbody>
+														</table>
 													</div>
 
 													<p>
