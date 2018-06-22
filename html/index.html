@@ -639,12 +639,14 @@
 																<tr>
 																	<th>Posição</th>
 																	<th>Nome</th>
+																	<th>Assinatura</th>
 																</tr>
 															</thead>
 															<tbody>
-																<tr ng-repeat="pessoa in evento.Confirmados">
+																<tr ng-repeat="pessoa in evento.Confirmados" ng-class="{espera: $index >= evento.NumeroMax}">
 																	<td>{{$index + 1}}º</td>
 																	<td>{{pessoa.Nome}}</td>
+																	<td></td>
 																</tr>
 															</tbody>
 														</table>
