@@ -353,14 +353,43 @@
 													</p>
 
 												</div>
+
+
+												<div class="customers" style="display: none">
+														<table>
+															
+															<thead>
+																<tr>
+																	<th>Posição</th>
+																	<th>Nome</th>
+																	<th>Assinatura</th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr ng-repeat="pessoa in evento.Confirmados">
+																	<td>{{$index + 1}}º</td>
+																	<td>{{pessoa.Nome}}</td>
+																	<td></td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+	
+													<p>
+														<i class="tiny material-icons">label_outline</i>
+														<button onclick="javascript:demoFromHTML();">PDF</button>
+													</p>
+											
+												</div>
+
+
 												
 												<!--Card Action LISTA DE INSCRITOS-->
 												<div class="card-action" ng-show="evento.Disponivel">
 													<a ng-attr-href="{{'#lista-inscritos-finalizados' + evento.ID}}" ng-click="postConfirmado(evento)" onclick="return false;">Lista de Inscritos no Evento</a>
 												</div>
-										
-											</div>
-											
+
+													
 											<!--Lista de Inscritos-->
 											<div ng-attr-id="{{'lista-inscritos-finalizados' + evento.ID}}" class="modal modal-fixed-footer">
 												<div class="modal-content">
@@ -632,7 +661,7 @@
 														<span class="topico-info"> Nº de Inscritos:</span> {{evento.Confirmados.length}}/{{evento.NumeroMax}}
 													</p>
 
-													<div class="customers">
+													<div class="customers" style="display: none">
 														<table>
 															
 															<thead>
@@ -643,7 +672,7 @@
 																</tr>
 															</thead>
 															<tbody>
-																<tr ng-repeat="pessoa in evento.Confirmados" ng-class="{espera: $index >= evento.NumeroMax}">
+																<tr ng-repeat="pessoa in evento.Confirmados">
 																	<td>{{$index + 1}}º</td>
 																	<td>{{pessoa.Nome}}</td>
 																	<td></td>
