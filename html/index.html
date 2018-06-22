@@ -494,7 +494,7 @@
 												var pdf = new jsPDF('p', 'pt', 'letter');
 												// source can be HTML-formatted string, or a reference
 												// to an actual DOM element from which the text will be scraped.
-												source = $('.bordered')[0];
+												source = $('.tabelaDeTeste')[0];
 					
 												// we support special element handlers. Register them with jQuery-style 
 												// ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
@@ -672,6 +672,28 @@
 															</tr>
 														</tbody>
 													</table>
+
+													<table class="tabelaDeTeste">
+															<!--Titulos da tabela-->
+															<thead>
+																<tr>
+																	<th>Posição</th>
+																	<th>Nome</th>
+																	<th>Data da Inscrição</th>
+																</tr>
+															</thead>
+	
+															<!--Linha para cada usuario-->
+															<tbody>
+																<tr ng-repeat="pessoa in evento.Confirmados" ng-class="{espera: $index >= evento.NumeroMax}">
+																	<td>{{$index + 1}}º</td>
+																	<td>{{pessoa.Nome}}</td>
+																	<td>{{pessoa.DataInscricao}}</td>
+																</tr>
+															</tbody>
+													</table>
+
+
 												</div>
 												
 												<div class="modal-footer">
