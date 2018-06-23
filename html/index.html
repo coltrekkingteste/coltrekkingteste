@@ -377,7 +377,7 @@
 												<!--Card Action LISTA DE INSCRITOS-->
 												<div class="card-action" ng-show="evento.Disponivel">
 													<a ng-attr-href="{{'#lista-inscritos-finalizados' + evento.ID}}" ng-click="postConfirmado(evento)" onclick="return false;">Lista de Inscritos no Evento</a>
-													<a ng-click="gerarPDF('tabelaDoEventoNumero-' + evento.ID);" onclick="return false;"><img id="iconPdf" src="../rsc/icon/pdf.png"></a>
+													<a ng-if="usuario.Admin" ng-click="gerarPDF('tabelaDoEventoNumero-' + evento.ID);" onclick="return false;"><img id="iconPdf" src="../rsc/icon/pdf.png"></a>
 												</div>
 										
 											</div>
@@ -639,7 +639,7 @@
 												<!--Card Action LISTA DE INSCRITOS-->
 												<div class="card-action" ng-show="evento.Disponivel">
 													<a ng-attr-href="{{'#lista-inscritos' + evento.ID}}" ng-click="postConfirmado(evento)" onclick="return false;">Lista de Inscritos no Evento</a>
-													<a ng-click="gerarPDF('tabelaDoEventoNumero-' + evento.ID);" onclick="return false;"><img id="iconPdf" src="../rsc/icon/pdf.png"></a>
+													<a ng-if="usuario.Admin" ng-click="gerarPDF('tabelaDoEventoNumero-' + evento.ID);" onclick="return false;"><img id="iconPdf" src="../rsc/icon/pdf.png"></a>
 												</div>
 										
 											</div>
