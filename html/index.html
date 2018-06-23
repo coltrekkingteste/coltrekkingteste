@@ -371,19 +371,13 @@
 															</tbody>
 														</table>
 													</div>
-
-													<p>
-														<i class="tiny material-icons">label_outline</i>
-														<a ng-click="gerarPDF('tabelaDoEventoNumero-' + evento.ID);" onclick="return false;">PDF</a>
-													</p>
-													
-
-
+											
 												</div>
 												
 												<!--Card Action LISTA DE INSCRITOS-->
 												<div class="card-action" ng-show="evento.Disponivel">
 													<a ng-attr-href="{{'#lista-inscritos-finalizados' + evento.ID}}" ng-click="postConfirmado(evento)" onclick="return false;">Lista de Inscritos no Evento</a>
+													<a ng-click="gerarPDF('tabelaDoEventoNumero-' + evento.ID);" onclick="return false;"><img id="iconPdf" src="../rsc/icon/pdf.png"></a>
 												</div>
 										
 											</div>
@@ -638,16 +632,14 @@
 														</table>
 													</div>
 
-													
-
 
 
 												</div>
 												
 												<!--Card Action LISTA DE INSCRITOS-->
 												<div class="card-action" ng-show="evento.Disponivel">
-													<a ng-click="gerarPDF('tabelaDoEventoNumero-' + evento.ID);" onclick="return false;"><img id="iconListaNegraERemover" src="../rsc/icon/listanegra.png"></a>
 													<a ng-attr-href="{{'#lista-inscritos' + evento.ID}}" ng-click="postConfirmado(evento)" onclick="return false;">Lista de Inscritos no Evento</a>
+													<a ng-click="gerarPDF('tabelaDoEventoNumero-' + evento.ID);" onclick="return false;"><img id="iconPdf" src="../rsc/icon/pdf.png"></a>
 												</div>
 										
 											</div>
