@@ -605,7 +605,7 @@
 				console.log("numero de TDS: " + numeroDeTD);
 				var rows = [];
 				for(var i=0;i<numeroDeTD;i++) {
-					var aux = $('#'+idDoEventoParaGerarTabela + ' td')[i];
+					var aux = $('#'+idDoEventoParaGerarTabela + ' td')[i].innerHTML;
 					rows.push({"id": i+1 + "º", "name": aux});
 				}
 				console.log(rows);
