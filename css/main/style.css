@@ -423,9 +423,14 @@ h3{
 #iconPdf{
   width: 30px;
   margin-left: -5px !important;
+  margin-top: -4px !important;
 }
 #iconPdf:hover{
   background-color:#D8D8D8;
+}
+
+.listaDeincritos {
+  margin-top: -10px !important;
 }
 
 /*Cores dos CountDowns*/
