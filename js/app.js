@@ -601,7 +601,7 @@
 				{title: "          ", dataKey: "g"}
 				];
 
-				var numeroDeTD = $('#tabelinha td').length;
+				var numeroDeTD = $('#'+ idDoEventoParaGerarTabela + ' td').length;
 				var rows = [];
 				for(var i=0;i<numeroDeTD;i++) {
 					var aux = $('#'+idDoEventoParaGerarTabela+' td')[i];
