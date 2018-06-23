@@ -589,34 +589,43 @@
 
 		//Gerar lista PDF
 		$scope.gerarPDF = function(idDoEventoParaGerarTabela) {
-			var pdf = new jsPDF('p', 'pt', 'letter');
-			source = $('#'+idDoEventoParaGerarTabela)[0];
-			specialElementHandlers = {
-				'#bypassme': function (element, renderer) {
-					return true
-				}
-			};
-			margins = {
-				top: 80,
-				bottom: 60,
-				left: 40,
-				width: 522
-			};
-			pdf.fromHTML(
-			source,
-			margins.left,
-			margins.top, { 
-				'width': margins.width,
-				'elementHandlers': specialElementHandlers
-			},
+				var columns = [
+				{title: "P", dataKey: "id"},
+				{title: "Nome", dataKey: "name"}, 
+				{title: "          ", dataKey: "a"},
+				{title: "          ", dataKey: "b"},
+				{title: "          ", dataKey: "c"},
+				{title: "Assinatura", dataKey: "d"},
+				{title: "          ", dataKey: "e"},
+				{title: "          ", dataKey: "f"},
+				{title: "          ", dataKey: "g"}
+				];
 
-			function (dispose) {
-				pdf.save('Lista de Inscritos.pdf');
-			}, margins);
+				var numeroDeTD = $('#tabelinha td').length;
+				var rows = [];
+				for(var i=0;i<numeroDeTD;i++) {
+					var aux = $('#'+idDoEventoParaGerarTabela+' td')[i];
+					rows.push({"id": i+1 + "º", "name": aux});
+				}
+				var doc = new jsPDF('p', 'pt');
+				doc.autoTable(columns, rows, {
+					styles: {fillColor: [130, 130, 130]},
+					bodyStyles: {
+						fillColor: [210, 210, 210],
+					},
+					alternateRowStyles: {
+						fillColor: [240, 240, 240]
+					},
+					columnStyles: {
+						name: {fillColor: 247},
+						id: {fillColor: 240}
+					},
+				});
+				doc.save('table.pdf');	
 		}
 
 
-		
+
 		//Adicionar usuario na lista negra
 		$scope.adicionarListaNegra = function(id, idevento) {
 			var dataPost = {
