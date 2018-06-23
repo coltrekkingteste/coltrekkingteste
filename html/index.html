@@ -646,11 +646,8 @@
 												
 												<!--Card Action LISTA DE INSCRITOS-->
 												<div class="card-action" ng-show="evento.Disponivel">
+													<a ng-click="gerarPDF('tabelaDoEventoNumero-' + evento.ID);" onclick="return false;"><img id="iconListaNegraERemover" src="../rsc/icon/listanegra.png"></a>
 													<a ng-attr-href="{{'#lista-inscritos' + evento.ID}}" ng-click="postConfirmado(evento)" onclick="return false;">Lista de Inscritos no Evento</a>
-													<p>
-														<i class="tiny material-icons">label_outline</i>
-														<a ng-click="gerarPDF('tabelaDoEventoNumero-' + evento.ID);" onclick="return false;">PDF</a>
-													</p>
 												</div>
 										
 											</div>
