@@ -623,7 +623,7 @@
 						id: {fillColor: 240}
 					},
 				});
-				doc.save('table.pdf');	
+				doc.save('ListaDePresenca.pdf');	
 		}
 
 
