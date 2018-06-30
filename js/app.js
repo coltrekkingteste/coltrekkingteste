@@ -164,6 +164,7 @@
 			$(document).ready(function() {
 				//Select
 				$('select').material_select();
+
 				
 				//Date-Picker
 				$('.datepicker').pickadate({
@@ -417,6 +418,7 @@
 					$(document).ready(function() {
 						$('.modal').modal();
 						$('.scrollspy').scrollSpy();
+	
 						
 						$('.dropdown-button').dropdown({
 							inDuration: 300,
@@ -458,9 +460,9 @@
 			
 			var data = {
 				evento: evento.ID,
-				usuario: $rootScope.usuario.ID
+				usuario: $rootScope.usuario.ID,
+				blacklist: $rootScope.usuario.ListaNegra
 			}
-			
 			//Chama POST Confirmar Evento
 			httpService.post('/confirmar-evento', data, function(answer) {
 				//Reabilita o botao de se inscrever
@@ -474,7 +476,7 @@
 					$scope.postConfirmado(evento);
 					$scope.confirmadosPorMim();
 				} else {
-					Materialize.toast("Erro ao se inscrever no evento!", 3000);
+					Materialize.toast("Erro ao se inscrever no evento! Verifique se você está na lista negra.", 3000);
 				}
 			});
 		}
@@ -516,9 +518,6 @@
 			httpService.post('/confirmados-por-mim', data, function(answer) {
 				$rootScope.eventosConfirmados = answer;
 				
-				//Seta margin top do scroll spy em funcao da altura do card
-				var altura = $('#card-confirmados').height() + 36;
-				$('.table-of-contents').css("margin-top", altura + "px");
 			});
 		}
 		
@@ -536,14 +535,15 @@
 		//Finalizar evento
 		$scope.finalizarEvento = function(params, eventoID, fatorKAntigo) {
 			//Pega as pessoas marcadas
-			var pessoas = $("input[name='pessoas[]']").toArray();
+			var transformaEventoIDstring = eventoID.toString();
+			transformaEventoIDstring = transformaEventoIDstring + "[]";
+			var pessoas = $("input[name='stringPessoasEventos-"+transformaEventoIDstring+"']").toArray();
 			var pessoasArray = [];
 			var kilometragemParaFloat =  parseFloat(params.Kilometragem.replace(',','.'));
 			var subidaParaFloat = parseFloat(params.subida.replace(',','.'));
 			var descidaParaFloat = parseFloat(params.descida.replace(',','.'));
 						
 			pessoas.forEach(elem => pessoasArray.push(elem.value));
-			
 			var dataPost = {
 				eventoID: eventoID,
 				//fatorK na verdade eh a pontucao, math.abs eh o modulo do numero
@@ -558,13 +558,117 @@
 			httpService.post('/finalizar-evento', dataPost, function(answer) {
 				//Emite alerta sobre o status da operacao
 				if(answer) {
-					Materialize.toast("Evento finalizado com sucesso!", 2000);					
+					Materialize.toast("Pontuação cadastrada com sucesso!", 2000);					
 					$scope.eventosGetter();
 				} else {
 					
 				}
 			});
 		}
+
+
+
+		//Finalizar Evento Prelecao - Sem Fator K
+		$scope.finalizarEventoPrelecao = function(eventoID) {
+			var dataPost = {
+				eventoID: eventoID
+			}
+			
+			//Chama POST Excluir Evento
+			httpService.post('/finalizar-evento-prelecao', dataPost, function(answer) {
+				//Emite alerta sobre o status da operacao
+				if(answer) {
+					Materialize.toast("Evento finalizado com sucesso!", 2000);					
+					$scope.eventosGetter();
+				} else {
+					Materialize.toast("Erro ao finalizar evento", 3000);
+				}
+			});
+		}
+
+
+		//Gerar lista PDF
+		$scope.gerarPDF = function(idDoEventoParaGerarTabela, nomeDoEvento, dataDoEvento) {
+			var columns = [
+			{title: "P", dataKey: "id"},
+			{title: "Nome", dataKey: "name"}, 
+			{title: "          ", dataKey: "a"},
+			{title: "          ", dataKey: "b"},
+			{title: "          ", dataKey: "c"},
+			{title: "Assinatura", dataKey: "d"},
+			{title: "          ", dataKey: "e"},
+			{title: "          ", dataKey: "f"},
+			{title: "          ", dataKey: "g"}
+			];
+			var numeroDeTD = $('#'+ idDoEventoParaGerarTabela + ' td').length;
+			var rows = [];
+			for(var i=0;i<numeroDeTD;i++) {
+				var aux = $('#'+idDoEventoParaGerarTabela + ' td')[i].innerHTML;
+				rows.push({"id": i+1 + "º", "name": aux});
+			}
+			var doc = new jsPDF('p', 'pt');
+
+			doc.setFontSize(14);
+			doc.text(nomeDoEvento, 40, 45);
+			doc.text('Data: ' + dataDoEvento, 40, 70);
+
+			doc.autoTable(columns, rows, {
+				styles: {fillColor: [130, 130, 130]},
+				bodyStyles: {
+					fillColor: [210, 210, 210],
+				},
+				alternateRowStyles: {
+					fillColor: [240, 240, 240]
+				},
+				columnStyles: {
+					name: {fillColor: 247},
+					id: {fillColor: 240}
+				},
+				margin: {top: 90}
+			});
+			doc.save('ListaDePresenca.pdf');	
+		}
+
+		//Adicionar usuario na lista negra
+		$scope.adicionarListaNegra = function(id, idevento) {
+			var dataPost = {
+				ID: id,
+				IDEvento: idevento
+			}
+
+			//Chama POST Adicionar na lista negra
+			httpService.post('/adicionar-lista-negra', dataPost, function(answer) {
+				//Emite alerta sobre o status da operacao
+				if(answer) {
+					Materialize.toast("Usuario adicionado na lista negra com sucesso!", 2000);					
+				} else {
+					Materialize.toast("Erro ao adicionar usuario na lista negra", 3000);
+				}
+			});
+		}
+
+
+
+		//Remover usuario da lista negra
+		$scope.removerListaNegra = function(id, idevento) {
+			var dataPost = {
+				ID: id,
+				IDEvento: idevento
+			}
+
+			//Chama POST Remover na lista negra
+			httpService.post('/remover-lista-negra', dataPost, function(answer) {
+				//Emite alerta sobre o status da operacao
+				if(answer) {
+					Materialize.toast("Usuario removido da lista negra com sucesso!", 2000);					
+				} else {
+					Materialize.toast("Erro ao remover usuario da lista negra", 3000);
+				}
+			});
+		}
+
+
+		
 		
 		//Excluir Evento
 		$scope.excluirEvento = function(eventoID) {
@@ -625,16 +729,6 @@
 				//Select
 				$('select').material_select();
 				
-				//Post fixado
-				$("#fixado").change(function() {
-					if(this.checked) {
-						$("#evento-atrelado").attr("disabled", true);
-						$("#evento-atrelado").material_select();
-					} else {
-						$("#evento-atrelado").attr("disabled", false);
-						$("#evento-atrelado").material_select();
-					}
-				});
 			});
 		});
 		
@@ -642,7 +736,7 @@
 			var data = {
 				Texto: params.TextoPostagem.replace(/\n\r?/g, '<br />'), //Insere os break-lines
 				EventoID: params.EventoAtrelado || 0,
-				Fixado: params.Fixado || false,
+				Fixado: params.Fixado || true,
 				Data: new Date().toString().substring(0, 24), //Pega data em horario local sem lixo
 				AdminID: $rootScope.usuario.ID
 			};
