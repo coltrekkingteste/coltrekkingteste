@@ -25,11 +25,11 @@ app.use(express.static('./', {
 
 //*****MySQL*****//
 var pool = mysql.createPool({
-	connectionLimit : 300,
-	host	: 'sql3.freemysqlhosting.net',
-	user	: 'sql3244684',
-	password: '6TzuQHKVk1',
-	database: 'sql3244684',
+	connectionLimit : 10000,
+	host	: 'sql9.freemysqlhosting.net',
+	user	: 'sql9257817',
+	password: 'PAq5ynK98y',
+	database: 'sql9257817',
 	debug	: false
 });
 
@@ -477,15 +477,14 @@ function getEventos(connection, callback) {
 		connection.release();
 		
 		if(!err) {
-			//Retorna o inverso do array, para mostrar pela ordem de criacao
-			let horaCorreta = new Date(new Date().toUTCString().replace(" GMT", ""));
-			horaCorreta.setHours(horaCorreta.getHours() + 2);
-			
+	
 			var retorno = {
 				eventos: rows.reverse(),
-				hora: horaCorreta.getTime()
+				//Pegar o horario
+				hora: new Date().getTime()
 			};
-			
+
+			console.log(retorno.hora);
 			callback(retorno);
 		} else {
 			//console.log(err);
@@ -543,6 +542,43 @@ function confirmarEventoDB(data, connection, callback) {
 						datetime = datetime.split('T');
 						datetime[1] = datetime[1].split('.')[0];
 						datetime = datetime.join(' ');
+
+
+
+
+						var horarioCompleto =  new Date().toUTCString();
+						horarioCompleto = horarioCompleto.substr(17, 9);
+						var horarioVerao = horarioCompleto[0] + horarioCompleto[1];
+						var intHorarioVerao = parseInt(horarioVerao);
+						if (intHorarioVerao == 0) {
+							intHorarioVerao = 21;
+						}
+						else if (intHorarioVerao == 1) {
+							intHorarioVerao = 22;
+						}
+						else if (intHorarioVerao == 2) {
+							intHorarioVerao = 23;
+						}
+						else {
+							intHorarioVerao = intHorarioVerao-3; //Ajustar o -3 dependendo se for horario de verao ou nao
+						}
+						// Se o horario tiver apenas um numero no campo horas,  ex: 1:15, entao adicionar o 0 antes, ex: 01:15 
+						var charHorarioVerao = intHorarioVerao.toString();
+						var charHorarioVeraoCompleto = "";
+						if (charHorarioVerao.length == 1) {
+							charHorarioVeraoCompleto = "0" + charHorarioVerao;
+						}
+						else {
+							charHorarioVeraoCompleto = charHorarioVerao;
+						}
+
+						horarioCompleto = horarioCompleto.substr(2);
+						var horarioCerto = charHorarioVeraoCompleto + horarioCompleto;
+						var diaInscricao =  new Date().toUTCString();
+						diaInscricao = diaInscricao.substr(5,11);
+						horarioCerto = diaInscricao + " - " + horarioCerto;
+
+
 						
 						//Seta o post
 						post = {
@@ -550,7 +586,7 @@ function confirmarEventoDB(data, connection, callback) {
 							IDEvento: data.evento,
 							Colocacao: 0,
 							ListaEspera: 0,
-							DataInscricao: new Date().toUTCString(),
+							DataInscricao: horarioCerto,
 							DataHoraInscricao: datetime
 						};
 
@@ -884,19 +920,6 @@ function estaDisponivel(evento, connection, callback) {
 	});
 }
 
-//*****Printa Tabela*****//
-function printTabela(connection, tabela) {
-	connection.query('SELECT * FROM ??', [tabela], function(err, rows, fields) {
-		connection.release();
-		
-		if(!err) {
-			//console.log(rows);
-		} else {
-			//console.log('Error while performing Query (PRINTA TABELA)');
-		}
-	});
-}
-
 //*****Monta Ranking*****//
 function montaRanking(connection, callback) {
 	connection.query('SELECT ID, Nome, FatorK FROM pessoa WHERE (FatorK > 0) ORDER BY FatorK DESC', function(err, rows, fields) {
@@ -908,26 +931,26 @@ function montaRanking(connection, callback) {
 			var promessa = new Promise(function(resolve, release) {
 				for(var i = 0; i < rows.length; i++) {
 					if(i == 0) {
-						connection.query('UPDATE pessoa SET Posicao = 1 WHERE ID = ?', rows[0].ID);
+						//connection.query('UPDATE pessoa SET Posicao = 1 WHERE ID = ?', rows[0].ID);
 						rows[0].Posicao = 1;
 					} else {
 						if(rows[i].FatorK == rows[i - 1].FatorK) {
-							connection.query('UPDATE pessoa SET Posicao = ? WHERE ID = ?', [rows[i - 1].Posicao, rows[i].ID], function(err, rows, fields) {
+							//connection.query('UPDATE pessoa SET Posicao = ? WHERE ID = ?', [rows[i - 1].Posicao, rows[i].ID], function(err, rows, fields) {
 								iteracao++;
 
 								if(iteracao == numRows) {
 									resolve();
 								}
-							});
+							//});
 							rows[i].Posicao = rows[i - 1].Posicao;
 						} else {
-							connection.query('UPDATE pessoa SET Posicao = ? WHERE ID = ?', [(i + 1), rows[i].ID], function(err, rows, fields) {
+							//connection.query('UPDATE pessoa SET Posicao = ? WHERE ID = ?', [(i + 1), rows[i].ID], function(err, rows, fields) {
 								iteracao++;
 
 								if(iteracao == numRows) {
 									resolve();
 								}
-							});
+							//});
 							rows[i].Posicao = i + 1;
 						}
 					}

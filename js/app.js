@@ -25,8 +25,16 @@
 						$location.path('/create-event');
 					}
 				} else {
-					event.preventDefault();
-					$location.path('/');
+					if(next.templateUrl == "../html/finalizados2018.html") {
+						$location.path('/finalizados2018');
+					}
+					else if(next.templateUrl == "../html/finalizados2017.html") {
+						$location.path('/finalizados2017');
+					}
+					else {
+						event.preventDefault();
+						$location.path('/');
+					}
 				}
 			});
 		});
@@ -44,6 +52,18 @@
 		.when("/create-news",
 			{
 				templateUrl: "../html/create/news.html",
+				controller: "CriarPostsController"
+			}
+		)
+		.when("/finalizados2018",
+			{
+				templateUrl: "../html/finalizados2018.html",
+				controller: "CriarPostsController"
+			}
+		)
+		.when("/finalizados2017",
+			{
+				templateUrl: "../html/finalizados2017.html",
 				controller: "CriarPostsController"
 			}
 		)
@@ -201,9 +221,12 @@
 				//Verifica se esta no modo de edicao
 				if($scope.modoEdicao) {					
 					//Edita os valores dos elementos
-					$("#titulo").text("Editar \"" + $scope.eventoAttr.nome + "\"");
+					$("#titulo").text("Editar Evento");
 					$("#nome").val($scope.eventoAttr.nome);
 					$("#tipo").val($scope.eventoAttr.tipo);
+
+					//Chamar Verificar tipo, para ajustar os campos de acordo com o tipo. Ex: prelecao nao tem dificuldade
+					verificaTipo();
 					
 					if($scope.eventoAttr.tipoTrekking != "null") {
 						$("#tipoTrekking").val($scope.eventoAttr.tipoTrekking);
@@ -254,6 +277,10 @@
 			params.FimInscricao += 'T' + params.HorarioFimInscricao + ":00";
 			params.FimInscricao = new Date(params.FimInscricao).toUTCString().replace(" GMT", "");
 			
+			//Seta o ano do evento, levando em consideracao a data da inscricao do evento
+			var anoEvento = params.DataInscricao.substr(12, 4);
+			params.ano = anoEvento;
+
 			//Deleta params inuteis
 			delete params.HorarioInscricao;
 			delete params.DataFimInscricao;
@@ -311,9 +338,15 @@
 	app.controller('EventosController', ['HTTPService', 'EventosService', '$timeout', '$rootScope', '$scope', '$interval', '$window', '$location',  function(httpService, eventosService, $timeout, $rootScope, $scope, $interval, $window, $location) {
 		//Funcao Countdown
 		$scope.funcaoCountdown = function(element, dataCountdown, controle) {
-			var agora = $scope.horaServidor;
-			var distancia = dataCountdown - agora - 3600000; //-36000 Milissegundo pois os eventos estavam 1 hora adiantado e nao consegui achar o problema, por isso -36000 Milissegundo  (1 hora)
+			// Pegar o fuso horario em milissegundo
+			var fuso = new Date().getTimezoneOffset() * 60000;
+			//Pegar o horario com o fuso (deixando como 0 UTC)
+			var agora = $scope.horaServidor + fuso;
+			var distancia = dataCountdown - agora;
 			
+			//console.log("Servidor: " + agora);
+			//console.log("Data Evento: " + dataCountdown);
+
 			//Transforma distancia em d h m s
 			var days = Math.floor(distancia / (1000 * 60 * 60 * 24));
 			var hours = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -538,6 +571,7 @@
 			var transformaEventoIDstring = eventoID.toString();
 			transformaEventoIDstring = transformaEventoIDstring + "[]";
 			var pessoas = $("input[name='stringPessoasEventos-"+transformaEventoIDstring+"']").toArray();
+			console.log(pessoas);
 			var pessoasArray = [];
 			var kilometragemParaFloat =  parseFloat(params.Kilometragem.replace(',','.'));
 			var subidaParaFloat = parseFloat(params.subida.replace(',','.'));
@@ -734,7 +768,7 @@
 		
 		$scope.criarPostagem = function(params) {
 			var data = {
-				Texto: params.TextoPostagem.replace(/\n\r?/g, '<br />'), //Insere os break-lines
+				Texto: "<h5>" + params.TituloPostagem.replace(/\n\r?/g, '<br />') + "</h5><br />" + params.TextoPostagem.replace(/\n\r?/g, '<br />'), //Insere os break-lines
 				EventoID: params.EventoAtrelado || 0,
 				Fixado: params.Fixado || true,
 				Data: new Date().toString().substring(0, 24), //Pega data em horario local sem lixo
@@ -778,31 +812,12 @@
 							filtrado.push(elem);
 						}
 					});
-					$scope.postsFiltro = $scope.postsFiltro.concat(filtrado);
-					
-					//Coisas pro filtro
-					$timeout(function() {
-						if($("#filtro-posts option:first-child").val() == '?') {
-							$("#filtro-posts option:first-child").remove();
-							$("#filtro-posts option:first-child").attr("selected", true);
-						}
-						$scope.filtrar();
-					}, 200);
+					$scope.postsFiltro = $scope.postsFiltro.concat(filtrado);					
 					
 				} else {
 					$scope.postagem = false;
 				}
 			}.bind(this));
-		}
-		
-		$scope.filtrar = function() {
-			var idFiltro = $("#filtro-posts").find(":selected").val().replace("number:", "");
-					
-			if(idFiltro == 0) {
-				$scope.postagem = $scope.postagemFixada;
-			} else {
-				$scope.postagem = $scope.postagemFixada.filter(post => post.EventoID == idFiltro);
-			}
 		}
 		
 		$scope.excluirPostagem = function(id) {

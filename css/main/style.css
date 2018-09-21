@@ -22,6 +22,10 @@ body {
   
 }
 
+.card.verde{
+  background-color: red !important;
+  color: red !important;
+}
 
 #loadingAlinhar{
   width:128px;
@@ -171,56 +175,10 @@ nav .tabs {
 .modulo-wrapper {
   margin-top: 80px; }
 
-/*****CARD POSTS*****/
-#news-feed .fixadas-titulo {
-  font-size: 24px;
-  font-weight: 300;
-  margin-top: 0px; }
-
-#news-feed .nome-post {
-  margin-top: 14px;
-  margin-bottom: 18px;
-  font-weight: 400;
-  color: #ff6e40; }
-
-#news-feed .chip {
-  height: 22px !important;
-  font-size: 11px !important;
-  line-height: 22px !important; }
-  #news-feed .chip img {
-    height: 22px !important;
-    width: 22px !important; }
-
-#news-feed .data-post {
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 11px;
-  display: inline; }
-
-#news-feed .delete-post, #news-feed .delete-post-fixado {
-  float: right;
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 21px; }
-
-#news-feed .delete-post-fixado {
-  margin-top: -5px; }
-
-#news-feed .data-post-fixado {
-  margin-top: -5px !important;
-  margin-bottom: 18px !important;
-  display: block !important; }
-
-#news-feed #filtro {
-  margin-bottom: 16px; }
-
-#news-feed #filtro-titulo {
-  margin-bottom: 0px; }
-
-#news-feed #filtro-posts {
-  color: black;
-  font-size: 14px; }
-
-#news-feed a {
-  color: #ff6e40; }
+  @media screen and (max-width: 600px) {
+    .modulo-wrapper {
+      margin-top: 37px; }
+  }
 
 
 
@@ -309,7 +267,11 @@ nav .tabs {
 }
 
 
-
+.card-title.titulo {
+  margin-left:auto;
+  margin-right:auto;
+  width: 200px;
+}
 
 /*************************************************/
 /* Mensagem pra quando nao ha eventos disponivel */
@@ -321,11 +283,22 @@ h1{
 }
 
 .imagemNaoHaEventosDisponivel{
-  width: 25%;
+  width: 40%;
   margin: auto;
   position: absolute;
-  margin-top: 250px;
+  margin-top: 260px;
   top: 0; left: 0; bottom: 0; right: 0;
+}
+
+@media screen and (max-width: 600px) {
+  h1 {
+    padding-top: 50px !important;
+  }
+  .imagemNaoHaEventosDisponivel{
+    width: 90% !important;
+    margin-top: 290px !important;
+    top: 0; left: 0; bottom: 0; right: 0;
+  }
 }
 
 h2{
@@ -402,7 +375,7 @@ h3{
 }
 @media screen and (max-width: 600px) {
   .tabsEventos.tabs .tabsEventos.tab a{
-    font-size: 100%;
+    font-size: 140%;
   }
 }
 
@@ -438,6 +411,40 @@ h3{
   margin-top: -20px !important;
 }
 
+.botaoEventosAnteriores{
+  color: firebrick !important;
+  font-size: 130%;
+  display: none;
+}
+
+/* Estilizar botoes o que eh lista negra e o que eh ranking */
+.btn.modal-trigger {
+  padding: 0 0rem;
+  background-color: white !important;
+  color: #8BC34A;
+  height: 40px;
+  width: 40%;
+  margin-left: 30%;
+  margin-bottom: 10px !important;
+  font-size: 1.6vw !important;
+  font-weight: 600;
+  border-radius: 30px;
+  margin-top: -18px !important;
+  margin-bottom: -18px !important;
+  box-shadow: 0px 0px;
+}
+.btn.modal-trigger:hover{
+  color: rgb(117, 170, 56);
+}
+
+@media screen and (max-width: 800px) {
+  .btn.modal-trigger {
+    font-size: 15px !important;
+    width: 100%;
+    margin-left: 0%;
+  }
+}
+
 /*Cores dos CountDowns*/
 aCountdownVerde {
   color: #8BC34A !important;
@@ -460,12 +467,12 @@ aCountdownVermelho {
   font-size: 20px; }
 
 aListaNegraBloqueadoProximo {
-  color: #ff6e40 !important;
+  color: firebrick !important;
   font-weight: bold;
   font-size: 20px; }
 
 aListaNegraLivreProximo {
-  color: FireBrick !important;
+  color: #ff6e40 !important;
   font-weight: bold;
   font-size: 20px; }
 
@@ -578,10 +585,3 @@ aListaNegraLivreProximo {
 
 .btn-wrapper {
   text-align: right; }
-
-/*****RANKING*****/
-#ranking {
-  margin-top: 100px !important; }
-
-  #ranking thead th {
-    padding-top: 50px !important; }
