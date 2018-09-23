@@ -477,14 +477,12 @@ function getEventos(connection, callback) {
 		connection.release();
 		
 		if(!err) {
-	
 			var retorno = {
 				eventos: rows.reverse(),
-				//Pegar o horario
+				//Pegar o fuso horario do servidor (para saber se eh +2(horario de verao) ou +3 (horario normal))
+				fusoHorarioServidor: new Date().getTimezoneOffset()*60000, //Multiplicar com 60000 para converter minutos em milissigundos
 				hora: new Date().getTime()
 			};
-
-			console.log(retorno.hora);
 			callback(retorno);
 		} else {
 			//console.log(err);

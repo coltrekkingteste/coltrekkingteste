@@ -270,8 +270,6 @@
 			params.DataInscricao += 'T' + params.HorarioInscricao + ":00";
 			//Criar a dataInscricao
 			params.DataInscricao = new Date(params.DataInscricao);
-			//Somar 3 horas do horario da inscricao para ficar com UTC 0
-			params.DataInscricao.setHours(params.DataInscricao.getHours() + 3);
 			//Remover o GMT do usuario que cadastrou a data de inscricao
 			params.DataInscricao = params.DataInscricao.toString().substring(0, 24);
 			console.log(params.DataInscricao);
@@ -282,8 +280,6 @@
 			params.FimInscricao += 'T' + params.HorarioFimInscricao + ":00";
 			//Criar o FimInscricao
 			params.FimInscricao = new Date(params.FimInscricao);
-			//Somar 3 horas do horario da inscricao para ficar com UTC 0
-			params.FimInscricao.setHours(params.FimInscricao.getHours() + 3);
 			//Remover o GMT do usuario que cadastrou o fim de inscricao
 			params.FimInscricao = params.FimInscricao.toString().substring(0, 24);
 			
@@ -348,10 +344,12 @@
 	app.controller('EventosController', ['HTTPService', 'EventosService', '$timeout', '$rootScope', '$scope', '$interval', '$window', '$location',  function(httpService, eventosService, $timeout, $rootScope, $scope, $interval, $window, $location) {
 		//Funcao Countdown
 		$scope.funcaoCountdown = function(element, dataCountdown, controle) {
-			// Pegar o fuso horario em milissegundo
-			var fuso = new Date().getTimezoneOffset() * 60000;
-			//Pegar o horario com o fuso (deixando como 0 UTC)
-			var agora = $scope.horaServidor + fuso;
+			// Pegar o fuso horario do usuario em milissegundo
+			var fusoUsuario = new Date().getTimezoneOffset() * 60000;
+			//O horario atual ira desconsiderar o fuso horario do usuario e ira considerar o fuso horario do servidor
+			var agora = $scope.horaServidor + fusoUsuario - $scope.fusoHorarioServidor;
+			console.log("Atual: " + agora);
+			console.log("fuso Server: " + $scope.fusoHorarioServidor);
 			var distancia = dataCountdown - agora;
 			
 			//console.log("Servidor: " + agora);
@@ -395,6 +393,7 @@
 			httpService.get('/eventos', function(answer) {
 				if(answer != false) {
 					$scope.eventos = answer.eventos;
+					$scope.fusoHorarioServidor = answer.fusoHorarioServidor;
 					$scope.horaServidor = answer.hora;
 					
 					//Atualiza hora do servidor
