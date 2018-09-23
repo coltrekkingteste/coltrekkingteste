@@ -154,8 +154,6 @@
 		if($scope.modoEdicao) {
 			$scope.eventoAttr = $location.search();
 			$scope.eventoAttr.numeroMax = parseInt($scope.eventoAttr.numeroMax);
-			$scope.eventoAttr.dataInscricao += " GMT";
-			$scope.eventoAttr.fimInscricao += " GMT";
 			
 			//Arruma a data de inscricao
 			var data = new Date($scope.eventoAttr.dataInscricao);
@@ -270,15 +268,27 @@
 			//Seta data de inscricao
 			params.DataInscricao = params.DataInscricao.split("/").reverse().join("-");
 			params.DataInscricao += 'T' + params.HorarioInscricao + ":00";
-			params.DataInscricao = new Date(params.DataInscricao).toUTCString().replace(" GMT", "");
+			//Criar a dataInscricao
+			params.DataInscricao = new Date(params.DataInscricao);
+			//Somar 3 horas do horario da inscricao para ficar com UTC 0
+			params.DataInscricao.setHours(params.DataInscricao.getHours() + 3);
+			//Remover o GMT do usuario que cadastrou a data de inscricao
+			params.DataInscricao = params.DataInscricao.toString().substring(0, 24);
+			console.log(params.DataInscricao);
 			
+
 			//Seta fim da inscricao
 			params.FimInscricao = params.DataFimInscricao.split("/").reverse().join("-");
 			params.FimInscricao += 'T' + params.HorarioFimInscricao + ":00";
-			params.FimInscricao = new Date(params.FimInscricao).toUTCString().replace(" GMT", "");
+			//Criar o FimInscricao
+			params.FimInscricao = new Date(params.FimInscricao);
+			//Somar 3 horas do horario da inscricao para ficar com UTC 0
+			params.FimInscricao.setHours(params.FimInscricao.getHours() + 3);
+			//Remover o GMT do usuario que cadastrou o fim de inscricao
+			params.FimInscricao = params.FimInscricao.toString().substring(0, 24);
 			
 			//Seta o ano do evento, levando em consideracao a data da inscricao do evento
-			var anoEvento = params.DataInscricao.substr(12, 4);
+			var anoEvento = params.DataInscricao.substr(11, 15);
 			params.ano = anoEvento;
 
 			//Deleta params inuteis
